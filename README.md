@@ -18,8 +18,10 @@ Nuestros potenciales clientes son gamers o personas que tengan como hobby los vi
 
 # Paginas de Referencia
 
-<url=https://www.cdmarket.com.ar>CDMarket</url><br />
-<url=https://wwww.planetagames.com.ar>Planeta Games</url><br />
-<url=https://www.starko.com.ar>STARKO</url><br />
-<url=https://www.hadriatica.com>Hadriatica</url><br />
-<url=https://www.electronicthings.com.ar>Electronic Things</url><br />
+<UL>
+<LI>[CDMarket](https://www.cdmarket.com.ar) 
+<LI>[Planeta Games](https://wwww.planetagames.com.ar)
+<LI>[STARKO](https://www.starko.com.ar)
+<LI>[Hadriatica](https://www.hadriatica.com)
+<LI>[Electronic Things](https://www.electronicthings.com.ar)
+</UL>
