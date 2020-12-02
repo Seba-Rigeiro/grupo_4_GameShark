@@ -19,8 +19,8 @@ Nuestros potenciales clientes son gamers o personas que tengan como hobby los vi
 # Paginas de Referencia
 
 <UL>
-<LI>[]<a href="http://www.cdmarket.com.ar">CDMarket</a>
-<LI><a href="(http://wwww.planetagames.com.ar">Planeta Games</a>
+<LI><a href="http://www.cdmarket.com.ar">CDMarket</a>
+<LI><a href="http://wwww.planetagames.com.ar">Planeta Games</a>
 <LI><a href="http://www.starko.com.ar">STARKO</a>
 <LI><a href="http://www.hadriatica.com">Hadriatica</a>
 <LI><a href="http://www.electronicthings.com.ar">Electronic Things</a>
