@@ -1,0 +1,570 @@
+* { box-sizing: border-box; }
+
+.separate {
+    height: 1rem;
+}
+
+body {
+    font-family: arial;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+header {
+    border-bottom: 2px solid darkblue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    background-color: white;
+}
+/* HEADER */
+
+.logo {
+    font-style: italic;
+    color: darkblue;
+}
+
+.logo span {
+    color: cornflowerblue;
+}
+
+.burguericon {
+    display: none;
+}
+
+.mainnav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.mainnav ul li {
+    margin: 0 1rem;
+}
+
+.mainnav ul li span {
+    border: 2px solid darkblue;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+}
+
+.searchbar input{
+    background-color: rgba(128, 128, 128, 0.212);
+    border: 2px solid transparent;
+    border-radius: 10rem;
+    font-weight: bold;
+    padding: 0 2rem;
+    height: 2rem;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+.searchbar input:focus {
+    outline: none;
+    border: 2px solid cornflowerblue;
+    box-shadow: 0 0 10px cornflowerblue;
+}
+
+.searchbar input::placeholder {
+    padding-left: 1.5rem;
+    font-style: italic;
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+}
+
+.searchbar span a{
+    position: relative;
+    color: grey;
+    right: 40px;
+}
+
+.searchbar span:hover a {
+    color: cornflowerblue;
+}
+
+.rbutton {
+    color: darkblue;
+    background-color: cornflowerblue;
+    padding: 10% 15%;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.rbutton:hover {
+    background-color: springgreen;
+}
+
+.button i {
+    margin-right: 1rem;
+    font-size: 2rem;
+}
+
+@media(max-width: 1040px){
+    .burguericon {
+        display: flex;
+        font-size: 2rem;
+    }
+
+    .mainnav {
+        display: none;
+    }
+
+    .hero {
+        background-size: cover;
+    }
+
+    .itemgrid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .itemgrid a {
+        border: 2px solid darkblue;
+        margin: 1rem 0;
+        width: 80%;
+    }
+
+    .icons img {
+        font-size: 5px;
+    }
+}
+
+@media(max-width: 600px){
+    .searchbar {
+        display: none;
+    }
+}
+
+/* HERO */
+
+.hero {
+    margin-top: 4rem;
+    background-image: url(img/hero.jpg);
+    background-position: center;
+    width: 100%;
+    height: 35rem;
+}
+
+.hero div {
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.hero div h2 {
+    background-color: cornflowerblue;
+    color: black;
+    font-weight: bolder;
+    font-style: italic;
+    padding: .5rem 2rem ;
+    box-shadow: 0 0 2rem cornflowerblue;
+    border-radius: 3rem;
+}
+
+/* paygrid */
+
+.paygrid {
+    background-color: rgba(128, 128, 128, 0.233);
+    width: 100%;
+}
+
+.payicons {
+    display: flex;
+    justify-content: center;
+}
+
+.payicons h4 {
+    margin: .75rem 3rem;
+}
+
+.payicons h4 i {
+    margin: 0 1rem; 
+    color: darkblue;
+}
+
+/* itemgrid */
+
+.itemgrid {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.item {
+    width: 16%;
+    height: 17rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transition: all 0.3s;
+    transform: scale(1);
+}
+
+.item h3 {
+    color: darkblue;
+    text-shadow: 0 0 1px darkblue;
+    position: relative;
+    bottom: 0px;
+    transition: all 0.3s;
+}
+
+.item:hover {
+    box-shadow: 0 0 10px darkblue;
+    transform: scale(1.04);
+}
+
+.item:hover h3 {
+    bottom: 20px;
+}
+
+#play {
+    background-image: linear-gradient(rgba(100, 148, 237, 0.0) , rgba(100, 148, 237)) , url('img/playitem.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+#xbox {
+    background-image: linear-gradient(rgba(100, 148, 237, 0.0) , rgba(100, 148, 237)) , url('img/xboxitem.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+#switch {
+    background-image: linear-gradient(rgba(100, 148, 237, 0.0) , rgba(100, 148, 237)) , url('img/switchitem.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+#pc {
+    background-image: linear-gradient(rgba(100, 148, 237, 0.0) , rgba(100, 148, 237)) , url('img/pcitem.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+#boffer {
+    background-image: linear-gradient(rgba(100, 148, 237, 0.0) , rgba(100, 148, 237)) , url('img/bestofferitem.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+#acc {
+    background-image: linear-gradient(rgba(100, 148, 237, 0.0) , rgba(100, 148, 237)) , url('img/accitem.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+footer {
+    border-top: 2px solid darkblue;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 20rem;
+    background-color: rgba(128, 128, 128 , 0.212);
+}
+
+footer h3 {
+    font-style: italic;
+}
+
+.footernav {
+    width: 33%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footernav ul {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    text-align: center;
+}
+
+.footernav li {
+    margin: .5rem 0;
+}
+
+.socialmedia {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icons {
+    margin-top: 1rem;
+}
+
+.icons img {
+    margin: 0 .5rem;
+    width: 5rem;
+    border-radius: 50%;
+}
+
+.notice {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notice input {
+    background-color: rgba(128, 128, 128, 0.212);
+    border: 2px solid transparent;
+    border-radius: 10rem;
+    font-weight: bold;
+    margin: 2rem 0;
+    padding: 0 2rem;
+    height: 2rem;
+    width: 70%;
+    transition: all 0.2s;
+}
+
+.notice input:focus {
+    outline: none;
+    border: 2px solid cornflowerblue;
+    box-shadow: 0 0 10px cornflowerblue;
+}
+
+.notice input::placeholder {
+    padding-left: .5rem;
+    font-style: italic;
+}
+
+.notice button {
+    font-weight: bolder;
+    border: none;
+    color: darkblue;
+    background-color: cornflowerblue;
+    padding: .5rem 2rem;
+    border-radius: 20px;
+    transition: all 0.3s;
+    box-shadow: 0 0 10px cornflowerblue;
+}
+
+.notice button:hover {
+    box-shadow: 0 0 10px springgreen;
+    background-color: springgreen;
+}
+
+/* REGISTER.HTML */
+
+.register {
+    display: flex;
+    justify-content: space-around;
+    background-image: url('img/bkground-register.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 38rem;
+}
+
+.container {
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 0 15px rgba(100, 148, 237, 0.1);
+    background-color: rgba(100, 148, 237, 0.1);
+    margin-top: 5rem;
+    width: 40%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container h2 {
+    margin-left: 3rem;
+    color: white;
+}
+
+.form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+}
+
+.form div {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+}
+
+.form label {
+    font-weight: bold;
+    color: white;
+    font-style: italic;
+}
+
+.form label::first-letter {
+    font-size: 1.5rem;
+}
+
+.form div input {
+    border: 2px solid darkblue;
+    border-radius: 10rem;
+    font-weight: bold;
+    padding: .5rem 1rem;
+    transition: all 0.2s;
+}
+    
+.form input:focus {
+    outline: none;
+    border: 2px solid cornflowerblue;
+    box-shadow: 0 0 10px cornflowerblue;
+}
+    
+.form input::placeholder {
+    font-style: italic;
+}
+
+.container select {
+    width: 49%;
+    border: 2px solid darkblue;
+    border-radius: 10rem;
+    color: grey;
+    font-weight: bold;
+    font-style: italic;
+    padding: .5rem 1rem;
+    transition: all 0.2s;
+}
+
+.form select:focus {
+    outline: none;
+    border: 2px solid cornflowerblue;
+    box-shadow: 0 0 10px cornflowerblue;
+}
+
+.form select option {
+    color: black;
+}
+
+.button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button a {
+    text-align: center;
+    width: 40%;
+    border-radius: 20rem;
+    padding: .5rem 2rem;
+    color: white;
+    background-color: darkblue;
+    box-shadow: 0 0 10px darkblue;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.button a:hover {
+    background-color: springgreen;
+    color: darkblue;
+    box-shadow: 0 0 10px springgreen;
+}
+
+/* login */
+
+.contlogin {
+    background-image: url('img/bklogin.jpg');
+    width: 100%;
+    height: 42rem;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    background-color: rgba(100, 148, 237 , 0.5);
+    box-shadow: 0 0 10px cornflowerblue;
+    border-radius: 5rem;
+    width: 30%;
+    height: 30rem;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.loginform {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.loginform div {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loginform label {
+    font-weight: bold;
+    color: white;
+    font-style: italic;
+}
+
+.loginform label::first-letter {
+    font-size: 1.5rem;
+}
+
+.login div input {
+    border: 2px solid darkblue;
+    border-radius: 10rem;
+    font-weight: bold;
+    padding: .5rem 1rem;
+    transition: all 0.2s;
+}
+    
+.login input:focus {
+    outline: none;
+    border: 2px solid cornflowerblue;
+    box-shadow: 0 0 10px cornflowerblue;
+}
+    
+.login input::placeholder {
+    font-style: italic;
+}
+
+.login a i {
+    margin-right: 1rem;
+}
+
+.login a {
+    padding: 1rem 3rem;
+    background-color: darkblue;
+    color: white;
+    border-radius: 20rem;
+    transition: all 0.3s;
+}
+
+.login a:hover {
+    background-color: springgreen;
+    color: darkblue;
+}
