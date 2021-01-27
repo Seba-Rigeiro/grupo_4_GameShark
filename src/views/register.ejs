@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head.ejs') %>
+<body>
+    
+    <%- include('partials/header.ejs') %>
+
+    <section class="register">
+        <div class="container">
+                <h2>DATOS DE USUARIO</h2>
+            <div class="form">
+                <div>
+                    <label for="name">Nombre:</label>
+                    <input type="text" placeholder="juan perez">
+                </div>
+                <div>
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" placeholder="juanperez2021">
+                </div>
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" placeholder="juanperez@xxxx.com">
+                </div>
+                <div>
+                    <label for="pass">Contraseña:</label>
+                    <input type="password" placeholder="*******">
+                </div>
+                <div>
+                    <label for="rpass">Repetila:</label>
+                    <input type="password" placeholder="*******">
+                </div>
+            </div>
+        </div> 
+        <div class="container">
+            <h2>CONTANOS UN POCO</h2>
+            <div class="form">
+                <div>
+                    <label for="console">¿Qué consola usas?</label>
+                    <select name="console" id="console">
+                        <option value="-">Elegí una opcion</option>
+                        <option value="ps">Playstation</option>
+                        <option value="xbx">Xbox</option>
+                        <option value="swch">Switch</option>
+                        <option value="pc">PC</option>
+                        <option value="other">Otro</option>
+                        <option value="none">No tengo consola</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="age">¿Cúantos años tenés?</label>
+                    <input type="number" placeholder="Edad">
+                </div>
+            </div>
+            <div class="button">
+                    <a href="#"><i class="fas fa-sign-in-alt"></i>ENVIAR</a>
+                    <a href="#"><i class="fas fa-undo-alt"></i>REINICIAR</a>
+            </div>
+        </div>   
+    </section>
+
+    <%- include('partials/header.ejs') %>
+               
+</body>
+</html>

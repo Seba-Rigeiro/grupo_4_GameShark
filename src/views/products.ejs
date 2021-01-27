@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head.ejs') %>
+<body>
+    
+    <%- include('partials/header.ejs') %>
+
+    <main class="productsgrid">
+        <div class="filter">
+            <div class="categoryname">
+                <h2>TODOS</h2>
+                <h5>210 resultados</h5>
+            </div>
+
+            <div class="order">
+                <h4>Ordenar publicaciones</h4>
+                <div class="selectcont">
+                    <select name="order" id="order">
+                        <option value="new">mas nuevo</option>
+                        <option value="old">mas viejo</option>
+                        <option value="cheep">mas economico</option>
+                        <option value="expencive">mas caro</option>
+                        <option value="off">mayor descuento</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="selectedfilters">
+                <div class="categoryfilter">
+                    <h4>Categoria</h4>
+                    <div class="categoryitems">
+                        <input type="checkbox" name="category" value="ps"><span>playstation</span><br>
+                        <input type="checkbox" name="category" value="xbox"><span>xbox</span><br>
+                        <input type="checkbox" name="category" value="switch"><span>switch</span><br>
+                        <input type="checkbox" name="category" value="PC"><span>PC</span><br>
+                    </div>
+                </div>
+                <div class="pricefilter">
+                    <h4>Precio</h4>
+                    
+                    <div class="priceitems">
+                        <div class="between">
+                            <span>min</span><input type="text" name="minprice" id="minprice" placeholder="precio minimo">
+                        </div>
+                        <div class="between">
+                            <span>max</span><input type="text" name="maxprice" id="maxprice" placeholder="precio maximo">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="offfilter">
+                    <h4>Descuento</h4>
+                    <div class="categoryitems">
+                        <input type="checkbox" name="category" value="ps"><span>%10</span><br>
+                        <input type="checkbox" name="category" value="xbox"><span>%20</span><br>
+                        <input type="checkbox" name="category" value="switch"><span>%30</span><br>
+                        <input type="checkbox" name="category" value="PC"><span>%40</span><br>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="productscontainer">
+            <div class="gridproducts">
+                <a href="products/detail" class="itemproduct">
+                    <img src="img/spiderman.jpeg">
+                    <div class="footeritem">
+                        <h3>$ 3500</h3>
+                        <div class="footerinfotitle">
+                            <h4>Spiderman - Miles Morales</h4>
+                            <h5>ps</h5>
+                        </div>    
+                    </div>    
+                </a>
+                <a href="#" class="itemproduct">
+                    <img src="img/spiderman.jpeg">
+                    <div class="footeritem">
+                        <h3>$ 3500</h3>
+                        <div class="footerinfotitle">
+                            <h4>Spiderman - Miles Morales</h4>
+                            <h5>ps</h5>
+                        </div>    
+                    </div>    
+                </a>
+                <a href="#" class="itemproduct">
+                    <img src="img/spiderman.jpeg">
+                    <div class="footeritem">
+                        <h3>$ 3500</h3>
+                        <div class="footerinfotitle">
+                            <h4>Spiderman - Miles Morales</h4>
+                            <h5>ps</h5>
+                        </div>    
+                    </div>    
+                </a>
+                <a href="#" class="itemproduct">
+                    <img src="img/spiderman.jpeg">
+                    <div class="footeritem">
+                        <h3>$ 3500</h3>
+                        <div class="footerinfotitle">
+                            <h4>Spiderman - Miles Morales</h4>
+                            <h5>ps</h5>
+                        </div>    
+                    </div>    
+                </a>
+                <a href="#" class="itemproduct">
+                    <img src="img/spiderman.jpeg">
+                    <div class="footeritem">
+                        <h3>$ 3500</h3>
+                        <div class="footerinfotitle">
+                            <h4>Spiderman - Miles Morales</h4>
+                            <h5>ps</h5>
+                        </div>    
+                    </div>    
+                </a>
+                <a href="#" class="itemproduct">
+                    <img src="img/spiderman.jpeg">
+                    <div class="footeritem">
+                        <h3>$ 3500</h3>
+                        <div class="footerinfotitle">
+                            <h4>Spiderman - Miles Morales</h4>
+                            <h5>ps</h5>
+                        </div>    
+                    </div>    
+                </a>
+                <a href="#" class="itemproduct">
+                    <img src="img/spiderman.jpeg">
+                    <div class="footeritem">
+                        <h3>$ 3500</h3>
+                        <div class="footerinfotitle">
+                            <h4>Spiderman - Miles Morales</h4>
+                            <h5>ps</h5>
+                        </div>    
+                    </div>    
+                </a>
+                <a href="#" class="itemproduct">
+                    <img src="img/spiderman.jpeg">
+                    <div class="footeritem">
+                        <h3>$ 3500</h3>
+                        <div class="footerinfotitle">
+                            <h4>Spiderman - Miles Morales</h4>
+                            <h5>ps</h5>
+                        </div>    
+                    </div>    
+                </a>
+                <a href="#" class="itemproduct">
+                    <img src="img/spiderman.jpeg">
+                    <div class="footeritem">
+                        <h3>$ 3500</h3>
+                        <div class="footerinfotitle">
+                            <h4>Spiderman - Miles Morales</h4>
+                            <h5>ps</h5>
+                        </div>    
+                    </div>    
+                </a>
+                <a href="#" class="itemproduct">
+                    <img src="img/spiderman.jpeg">
+                    <div class="footeritem">
+                        <h3>$ 3500</h3>
+                        <div class="footerinfotitle">
+                            <h4>Spiderman - Miles Morales</h4>
+                            <h5>ps</h5>
+                        </div>    
+                    </div>    
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer.ejs') %>
+               
+</body>
+</html>
