@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head.ejs') %>
+<body>
+    
+    <%- include('partials/header.ejs') %>
+
+    <main class="mycartcont">
+        <div class="mycartsqr">
+            <div class="mycarttitle">
+                <h4>nombre</h4>
+                <h4>plataforma</h4>
+                <h4>cantidad</h4>
+                <h4>precio</h4>
+                <h4>acciones</h4>
+            </div>
+            <div class="mycartitem"> 
+                <div class="mycartsubitem">
+                    <h4>Spiderman - Miles Morales</h4>
+                </div>
+                <div class="mycartsubitem">
+                    <h4>PS5</h4>
+                </div>
+                <div class="mycartsubitem">
+                    <h4>1 (uno)</h4>
+                </div>
+                <div class="mycartsubitem">
+                    <h4>$ 3500</h4>
+                </div>
+                <div class="mycartsubitem buttons">
+                    <a href="#"><i class="fas fa-plus"></i></a>
+                    <a href="#"><i class="fas fa-sign-in-alt"></i></a>
+                    <a href="#"><i class="fas fa-eraser"></i></a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="subcontainer">
+                <div class="mycarttitle">
+                    <h4>TOTAL</h4>
+                    <h4>$ 3500</h4>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="pay">
+        <h2>SELECCIONA TU METODO DE PAGO</h2>
+        <div class="payitems">
+            <a href="#"><i class="fab fa-cc-paypal"></i>PayPal</a>
+            <a href="#"><i class="fas fa-credit-card"></i>Tarjeta de credito</a>
+            <a href="#"><i class="far fa-credit-card"></i>Tarjeta de debito</a>
+            <a href="#"><i class="fas fa-money-bill"></i>Efectivo en domicilio</a>
+
+        </div>
+    </section>
+
+    <%- include('partials/footer.ejs') %>
+               
+</body>
+</html>

@@ -13,6 +13,11 @@ module.exports = {
 
     register : (req , res) => {
         res.render('register');
+    },
+
+    mycart : (req , res) => {
+        res.render('mycart');
     }
 }
+
 
