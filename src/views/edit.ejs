@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head.ejs') %>
+<body>
+    <main class="create-container">
+        <div class="create-title">
+            <h1>Edita un Producto</h1>
+        </div>
+            <div class="create-form-container">
+                <div class="create-form">
+                    <div>
+                        <label for="name">Nombre de producto</label>
+                        <input type="text" id="name">
+                    </div>
+                    <div>
+                        <label for="description">Descripcion</label>
+                        <textarea name="description" id="description"></textarea>
+                    </div>
+                    <div>
+                        <label for="name">Imagen</label>
+                        <input type="file" id="image">
+                    </div>
+                    <div>
+                        <label for="name">Plataforma</label>
+                        <select name="console" id="console">
+                            <option value="-">Elegí una opcion</option>
+                            <option value="ps">Playstation</option>
+                            <option value="xbx">Xbox</option>
+                            <option value="swch">Switch</option>
+                            <option value="pc">PC</option>
+                        </select>
+                        
+                    </div>
+                    <div>
+                        <label for="price">Precio</label>
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="create-button">
+                <button type="submit">Crear Producto</button>
+            </div>
+    </main>
+</body>
+</html>
