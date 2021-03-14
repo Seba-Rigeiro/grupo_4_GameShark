@@ -4,7 +4,8 @@
   "description": "Proyecto Integrdor",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "startdev": "nodemon app.js"
   },
   "author": "gameShark",
   "license": "ISC",
@@ -13,6 +14,10 @@
     "express": "^4.17.1",
     "express-generator": "^4.16.1",
     "method-override": "^3.0.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.7"
   }
 }

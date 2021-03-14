@@ -1,10 +1,19 @@
+const db = require('../database/models')
+//const sequelize = db.sequelize
+
 module.exports = {
     index : ( req , res) => {
         res.render('index');
     },
 
     products : (req , res) => {
-        res.render('products');
+      db.Product.findAll({
+          order: [
+              ['price', 'ASC']
+          ]
+      })
+       .then (productsList => res.render ("products", {productsList}))        
+         
     },
 
     login : (req , res) => {

@@ -63,106 +63,19 @@
         </div>
         <div class="productscontainer">
             <div class="gridproducts">
-                <a href="products/detail" class="itemproduct">
-                    <img src="img/spiderman.jpeg">
-                    <div class="footeritem">
-                        <h3>$ 3500</h3>
-                        <div class="footerinfotitle">
-                            <h4>Spiderman - Miles Morales</h4>
-                            <h5>ps</h5>
+                <% productsList.forEach( product=> { %>
+                    <a href="products/<%= product.id%>" class="itemproduct">
+                        <img src="/img/products/<%= product.image %>">
+                        <div class="footeritem">
+                            <h3>$ <%= product.price %></h3>
+                            <div class="footerinfotitle">
+                                <h4><%= product.name %> </h4>
+                                <h5><%= product.category_id %></h5>
+                            </div>    
                         </div>    
-                    </div>    
-                </a>
-                <a href="#" class="itemproduct">
-                    <img src="img/spiderman.jpeg">
-                    <div class="footeritem">
-                        <h3>$ 3500</h3>
-                        <div class="footerinfotitle">
-                            <h4>Spiderman - Miles Morales</h4>
-                            <h5>ps</h5>
-                        </div>    
-                    </div>    
-                </a>
-                <a href="#" class="itemproduct">
-                    <img src="img/spiderman.jpeg">
-                    <div class="footeritem">
-                        <h3>$ 3500</h3>
-                        <div class="footerinfotitle">
-                            <h4>Spiderman - Miles Morales</h4>
-                            <h5>ps</h5>
-                        </div>    
-                    </div>    
-                </a>
-                <a href="#" class="itemproduct">
-                    <img src="img/spiderman.jpeg">
-                    <div class="footeritem">
-                        <h3>$ 3500</h3>
-                        <div class="footerinfotitle">
-                            <h4>Spiderman - Miles Morales</h4>
-                            <h5>ps</h5>
-                        </div>    
-                    </div>    
-                </a>
-                <a href="#" class="itemproduct">
-                    <img src="img/spiderman.jpeg">
-                    <div class="footeritem">
-                        <h3>$ 3500</h3>
-                        <div class="footerinfotitle">
-                            <h4>Spiderman - Miles Morales</h4>
-                            <h5>ps</h5>
-                        </div>    
-                    </div>    
-                </a>
-                <a href="#" class="itemproduct">
-                    <img src="img/spiderman.jpeg">
-                    <div class="footeritem">
-                        <h3>$ 3500</h3>
-                        <div class="footerinfotitle">
-                            <h4>Spiderman - Miles Morales</h4>
-                            <h5>ps</h5>
-                        </div>    
-                    </div>    
-                </a>
-                <a href="#" class="itemproduct">
-                    <img src="img/spiderman.jpeg">
-                    <div class="footeritem">
-                        <h3>$ 3500</h3>
-                        <div class="footerinfotitle">
-                            <h4>Spiderman - Miles Morales</h4>
-                            <h5>ps</h5>
-                        </div>    
-                    </div>    
-                </a>
-                <a href="#" class="itemproduct">
-                    <img src="img/spiderman.jpeg">
-                    <div class="footeritem">
-                        <h3>$ 3500</h3>
-                        <div class="footerinfotitle">
-                            <h4>Spiderman - Miles Morales</h4>
-                            <h5>ps</h5>
-                        </div>    
-                    </div>    
-                </a>
-                <a href="#" class="itemproduct">
-                    <img src="img/spiderman.jpeg">
-                    <div class="footeritem">
-                        <h3>$ 3500</h3>
-                        <div class="footerinfotitle">
-                            <h4>Spiderman - Miles Morales</h4>
-                            <h5>ps</h5>
-                        </div>    
-                    </div>    
-                </a>
-                <a href="#" class="itemproduct">
-                    <img src="img/spiderman.jpeg">
-                    <div class="footeritem">
-                        <h3>$ 3500</h3>
-                        <div class="footerinfotitle">
-                            <h4>Spiderman - Miles Morales</h4>
-                            <h5>ps</h5>
-                        </div>    
-                    </div>    
-                </a>
+                    </a>
+                <% }) %> 
+                
 
             </div>
         </div>
