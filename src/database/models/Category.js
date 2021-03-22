@@ -11,6 +11,11 @@ module.exports = (sequelize, dataTypes) => {
     }, {
         tableName: 'categories',
     });
-    
+
+    Category.associate = (models) => {
+        Category.hasMany (models.Product, {
+            as: 'products'        
+        })
+    }
     return Category;
 }

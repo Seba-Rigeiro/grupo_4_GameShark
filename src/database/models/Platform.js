@@ -12,5 +12,11 @@ module.exports = (sequelize, dataTypes) => {
         tableName: 'platforms',
     });
 
+    Platform.associate = (models) => {
+        Platform.hasMany (models.Product, {
+            as: 'products'        
+        })
+    }
+    
     return Platform;
 }

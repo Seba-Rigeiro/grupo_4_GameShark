@@ -23,8 +23,20 @@ module.exports = (sequelize, DataTypes) => {
         },   
         {
         tableName: 'products',
-       
+        timestamps: true
+                 
         })
+
+        Product.associate = (models) => {
+            Product.belongsTo (models.Category, {
+                as: 'category',
+                foreingKey: 'category_id'
+            })
+            Product.belongsTo (models.Platform, {
+                as: 'platform',
+                foreingKey: 'platform_id'
+            })
+        }
        
     return Product;
     }
