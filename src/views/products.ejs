@@ -19,8 +19,8 @@
                     <select name="order" id="order">
                         <option value="new">mas nuevo</option>
                         <option value="old">mas viejo</option>
-                        <option value="cheep">mas economico</option>
-                        <option value="expencive">mas caro</option>
+                        <option value="cheap">mas barato</option>
+                        <option value="expensive">mas caro</option>
                         <option value="off">mayor descuento</option>
                     </select>
                 </div>
@@ -65,12 +65,12 @@
             <div class="gridproducts">
                 <% productsList.forEach( product=> { %>
                     <a href="products/<%= product.id%>" class="itemproduct">
-                        <img src="/img/products/<%= product.image %>">
+                        <img src="/img/products/<%= product.image %>" height="275px" >
                         <div class="footeritem">
                             <h3>$ <%= product.price %></h3>
                             <div class="footerinfotitle">
                                 <h4><%= product.name %> </h4>
-                                <h5><%= product.category_id %></h5>
+                                <h5><%= product.platform.name %></h5>
                             </div>    
                         </div>    
                     </a>

@@ -11,6 +11,6 @@ module.exports = (sequelize, dataTypes) => {
     }, {
         tableName: 'platforms',
     });
-    
+
     return Platform;
 }
