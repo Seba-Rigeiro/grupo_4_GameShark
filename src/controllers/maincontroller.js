@@ -8,11 +8,14 @@ module.exports = {
 
     products : (req , res) => {
       db.Product.findAll({
+          include: ['category', 'platform'],
           order: [
               ['price', 'ASC']
           ]
       })
-       .then (productsList => res.render ("products", {productsList}))        
+       .then (productsList => 
+           res.render ("products", {productsList})
+        )        
          
     },
 
