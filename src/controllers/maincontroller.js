@@ -1,4 +1,5 @@
-const db = require('../database/models')
+const db = require('../database/models');
+const { validationResult } = require ('express-validator');
 //const sequelize = db.sequelize
 
 module.exports = {
@@ -23,10 +24,34 @@ module.exports = {
         res.render('login');
     },
 
-    register : (req , res) => {
+    registerForm : (req , res) => {
         res.render('register');
     },
 
+    register : (req , res) => {
+        let errors = validationResult(req);      
+        if (errors.isEmpty()) {
+        
+            const { name, email, password } =  req.body
+
+            db.User.create({
+            name, 
+            email, 
+            password
+            })
+            .then(user => {
+                res.redirect('/')
+            })
+        } else {
+            res.render('register', { 
+                errors: errors.mapped(),
+                oldFormData: req.body
+            });
+        }   
+    },
+
+     
+       
     mycart : (req , res) => {
         res.render('mycart');
     }
