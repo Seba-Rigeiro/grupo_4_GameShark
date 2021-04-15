@@ -9,22 +9,46 @@
         <div class="create-title">
             <h1>Log In</h1>
         </div>
-            <div class="create-form-container">
-                <div class="create-form">
-                    <div>
-                        <label for="name">Nombre:</label>
-                        <input type="text" id="name">
-                    </div>
-                    <div>
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password">
+        
+        <form method="POST" action="/login" >
+            
+            <div class="login-form-container">
+                <div class="login-form">
+                   
+                                        
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <div>
+                            <input type="email" name= 'email'id="email"
+                            value="<%= locals.oldFormData && oldFormData.email ? oldFormData.email : '' %>">
+                            <% if (locals.errors && errors.email) { %>
+                                <div class="text-danger">
+                                    <%= errors.email.msg  %>
+                                </div>
+                            <%  }  %>         
+                        </div>
                     </div>
                     
+                    <div class="field">
+                        <label for="pass">Contraseña</label>
+                        <div>
+                            <input type="password" name= 'password' id="password">
+                            <% if (locals.errors && errors.password) { %>
+                                <div class="text-danger">
+                                    <%= errors.password.msg  %>
+                                </div>
+                            <%  }  %>         
+                        </div>    
+                    </div>
+                                       
                 </div>
             </div>
-            <div class="create-button">
-                <a href="#">Ingresar</a>
+            
+            <div class="button">
+                <button type="submit"> INGRESAR  </button>
+                
             </div>
+        </form>      
     </main>
 
     <%- include('partials/footer.ejs') %>
