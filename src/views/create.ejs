@@ -16,18 +16,19 @@
                     <div>
                        <label for="name">Categoria</label>
                         <select name="category_id">
-                            <option value="-">Elegí una opcion</option>
+                            <option value="">Elegí una opcion</option>
+                            <% console.log(categories) %> 
                             <%categories.forEach(categoryList=> { %>                            
-                            <option value='<%categoryList.id%>' ><%= categoryList.name %></option>    
+                            <option value='<%= categoryList.id %>' ><%= categoryList.name %></option>    
                             <% }) %>                         
                         </select>          
                     </div>
                     <div>                                              
                         <label for="name">Plataforma</label>
-                        <select name="console" id="console">
-                            <option value="-">Elegí una opcion</option>
+                        <select name="platform_id" id="platform_id">
+                            <option value="">Elegí una opcion</option>
                             <%platforms.forEach(platformList=> { %>                            
-                            <option value='<%platformList.id%>' ><%= platformList.name %></option>    
+                            <option value='<%= platformList.id %>' ><%= platformList.name %></option>    
                             <% }) %>          
                        </select>            
                         
@@ -41,7 +42,7 @@
                         <input type="file" name="product_image" id="product_image">
                     </div>                                       
                         <label for="price">Precio</label>
-                        <input type="text" name="price "id= "price">                    
+                        <input type="text" name="price" id="price">                    
                 </div>
             </div>
             <div class="create-button">
