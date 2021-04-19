@@ -10,6 +10,36 @@ module.exports = {
                     
     },
 
+    products : (req , res) => {
+        db.Product.findAll({
+            include: ['category', 'platform'],
+            order: [
+                ['price', 'ASC']
+            ]
+        })
+         .then (productsList => 
+             res.render ("products", {productsList})
+          )        
+           
+      },
+
+      productsByPlatform : (req , res) => {
+        db.Product.findAll({
+            include: ['category', 'platform'],
+            order: [
+                ['price', 'ASC']
+            ],
+            where: {
+                platform_id: true
+            }
+           
+        })
+         .then (productsList => 
+             res.render ("products", {productsList})
+          )        
+          
+      },
+
     createForm : (req , res ) => {
         // db.Category.findAll()                    
         //  .then (categories => {
@@ -52,22 +82,40 @@ module.exports = {
             db.Category.findAll(),
             db.Platform.findAll(),                   
         ])
-        /* .then ( promises => { 
-            const product = promises [0]
-            const categories = promises [1]
-            const platforms = promises [2]
-            if (product) {
-            res.render('edit', {product, categories, platforms}) 
-            }
-        }) */
+       
         .then (([product, categories, platforms]) => {
             res.render('edit', {product, categories, platforms}) 
         })
-        /* res.render('edit'); */
     },
 
     edit : (req , res ) => {
+            const { id } = req.params
+            const { name, category_id, platform_id, price,  } =  req.body
 
-        res.render('edit');
-    },
-}
+            db.Product.findByPk(id)
+                .then(product => {
+                    
+                    db.Product.update({
+                    name,
+                    category_id,
+                    platform_id,
+                    price,
+                    image: 
+                    {
+                        where: {    
+                        id
+                        }
+                    }
+                
+            
+                    .then(() => {
+                        res.redirect('/products')
+                    })
+                    .catch(err => console.log(err))
+                }    
+            
+                    )}        
+                )},
+
+  
+} 
