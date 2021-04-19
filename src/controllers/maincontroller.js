@@ -8,46 +8,63 @@ module.exports = {
         res.render('index');
     },
 
-    products : (req , res) => {
-      db.Product.findAll({
-          include: ['category', 'platform'],
-          order: [
-              ['price', 'ASC']
-          ]
-      })
-       .then (productsList => 
-           res.render ("products", {productsList})
-        )        
-         
-    },
-
+    
     loginForm : (req , res) => {
         res.render('login');
     },
 
-    loginAuth(req, res) {
-        let errors = validationResult(req);      
-          if (errors.isEmpty()) {
+    loginAuth (req, res) {
+        let errors = validationResult(req);
+        // Si no hay errores, buscar el usuario por mail
+        if (errors.isEmpty()) {
             
-        db.User.findOne({
-            where: {
-                email: req.body.email
-            }
-        } )   
-            .then (user => {                
+            db.User.findOne({
+                where: {
+                    email: req.body.email
+                }
+            })
+            .then (user => {
                 if(user) {
-                    if (bcrypt.compareSync(req.body.password, user.password)) { 
-                        req.session.user
-                        return res.redirect('/products') 
-            }
+                    user.email = req.body.email
+                    console.log (user)
+                    return res.redirect('/products')
                 } else {
-                    res.render('login', { 
-                        errors: errors.mapped(),
+                    res.render('login', {
+                        errors: {
+                            email: {
+                                value: '',
+                                msg: 'Ingresa un email valido',
+                                param: 'email',
+                                location: 'body'
+                              }
+                        },
                         oldFormData: req.body
-                    });
-            }
-            })       
-    }},
+                    })
+                }
+                    if (bcrypt.compareSync(req.body.password, user.password)) {
+                        req.session.user = user
+                            return res.redirect('/products')
+                    } else {
+                        res.render('login', {
+                            errors: {
+                                password: {
+                                    value: '',
+                                    msg: 'Ingresa una contraseña',
+                                    param: 'password',
+                                    location: 'body'
+                                  }
+                            },
+                        })
+                    }    
+            })
+    
+        } else {
+            res.render('login', { 
+            errors: errors.mapped(),
+            oldFormData: req.body
+            });
+        }
+    },
 
     logout: (req,res) =>{ 
         req.session.destroy()
