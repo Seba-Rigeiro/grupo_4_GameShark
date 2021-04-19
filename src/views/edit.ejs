@@ -6,11 +6,33 @@
         <div class="create-title">
             <h1>Editar Producto </h1>
         </div>
-            <div class="create-form-container">
-                <div class="create-form">
+
+        <form ?_method=PUT action="/edit"  enctype="multipart/form-data">
+            <div class="edit-form-container">
+                <div class="edit-form">
                     <div>
                         <label for="name">Nombre de producto</label>
-                        <input type="text" id="name">
+                        <input type="text" name="name" value="<%= product.name %>" required>
+                    </div>
+                    <div>
+                       <label for="name">Categoria</label>
+                        <select name="category_id">
+                            <option value="">Elegí una opcion</option>
+                            <%categories.forEach(categoryList=> { %>                            
+                            <option value='<%categoryList.id%>'
+                                <%= // si id categoria es igual a la categoria del producto selected.%>  ><%= categoryList.name %></option>    
+                            <% }) %>                         
+                        </select>          
+                    </div>
+                    <div>                                              
+                        <label for="name">Plataforma</label>
+                        <select name="platform" id="platform">
+                            <option value="">Elegí una opcion</option>
+                            <%platforms.forEach(platformList=> { %>                            
+                            <option value='<%platformList.id%>' ><%= platformList.name %></option>    
+                            <% }) %>          
+                       </select>            
+                        
                     </div>
                     <div>
                         <label for="description">Descripcion</label>
@@ -18,28 +40,17 @@
                     </div>
                     <div>
                         <label for="name">Imagen</label>
-                        <input type="file" id="image">
-                    </div>
-                    <div>
-                        <label for="name">Plataforma</label>
-                        <select name="console" id="console">
-                            <option value="-">Elegí una opcion</option>
-                            <option value="ps">Playstation</option>
-                            <option value="xbx">Xbox</option>
-                            <option value="swch">Switch</option>
-                            <option value="pc">PC</option>
-                        </select>
-                        
-                    </div>
-                    <div>
+                        <input type="file" name="product_image" id="product_image">
+                    </div>                                       
                         <label for="price">Precio</label>
-                        <input type="text">
-                    </div>
+                        <input type="text" name="price "id= "price">                    
                 </div>
             </div>
-            <div class="create-button">
-                <button type="submit">Crear Producto</button>
+            <div class="edit-button">
+                <button type="submit">Editar</button>
             </div>
+        </form>
+            
     </main>
 </body>
 </html>
