@@ -10,7 +10,7 @@
             <h1>Registrate</h1>        
         </div>
         
-        <form method="POST" action="/register" >
+        <form method="POST" action="/register" enctype="multipart/form-data" >
             
             <div class="create-form-container">
                 <div class="create-form">
@@ -52,6 +52,11 @@
                                 </div>
                             <%  }  %>         
                         </div>    
+                    </div>
+
+                    <div>
+                        <label for="image">Imagen de Perfil</label>
+                        <input type="file" name="user_image" id="user_image">
                     </div>
                                        
                 </div>
