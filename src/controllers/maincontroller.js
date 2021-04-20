@@ -15,7 +15,7 @@ module.exports = {
 
     loginAuth (req, res) {
         let errors = validationResult(req);
-        // Si no hay errores, buscar el usuario por mail
+        // Si no hay errores,busca el usuario por email
         if (errors.isEmpty()) {
             
             db.User.findOne({
@@ -23,17 +23,33 @@ module.exports = {
                     email: req.body.email
                 }
             })
-            .then (user => {
-                if(user) {
-                    user.email = req.body.email
-                    console.log (user)
-                    return res.redirect('/products')
+            // Si el usuario existe y el password es correcto, inicia session y redirige a la pag. de productos
+            .then(user => {
+                if (user) {
+                    if (bcrypt.compareSync(req.body.password, user.password)) {
+                        req.session.user = user
+                                return res.redirect('/products')
+                    // Si el password es incorrecto, muestra el error debajo del campo password (por seguridad)         
+                    } else {
+                        res.render('login', {
+                            errors: {
+                                password: {
+                                    value: '',
+                                    msg: 'el email o la contraseña son incorrectos ',
+                                    param: 'password',
+                                    location: 'body'
+                                  }
+                            },
+                        })
+    
+                    }
+                    // Si el email es incorrecto, muestra el error debajo del campo password (por seguridad)
                 } else {
                     res.render('login', {
                         errors: {
-                            email: {
+                            password: {
                                 value: '',
-                                msg: 'Ingresa un email valido',
+                                msg: 'el email o la contraseña son incorrectos',
                                 param: 'email',
                                 location: 'body'
                               }
@@ -41,30 +57,14 @@ module.exports = {
                         oldFormData: req.body
                     })
                 }
-                    if (bcrypt.compareSync(req.body.password, user.password)) {
-                        req.session.user = user
-                            return res.redirect('/products')
-                    } else {
-                        res.render('login', {
-                            errors: {
-                                password: {
-                                    value: '',
-                                    msg: 'Ingresa una contraseña',
-                                    param: 'password',
-                                    location: 'body'
-                                  }
-                            },
-                        })
-                    }    
             })
-    
+          // Si hay errores de validacion en los campos, los muestra 
         } else {
             res.render('login', { 
             errors: errors.mapped(),
             oldFormData: req.body
             });
-        }
-    },
+    }},
 
     logout: (req,res) =>{ 
         req.session.destroy()
