@@ -20,7 +20,7 @@
                             <option value="">Elegí una opcion</option>
                             <%categories.forEach(categoryList=> { %>                            
                             <option value='<%categoryList.id%>'
-                                <%= // si id categoria es igual a la categoria del producto selected.%>  ><%= categoryList.name %></option>    
+                                <%= categoryList.id == product.category_id ? 'selected' : '' %> > <%= categoryList.name %></option>    
                             <% }) %>                         
                         </select>          
                     </div>
@@ -29,7 +29,8 @@
                         <select name="platform" id="platform">
                             <option value="">Elegí una opcion</option>
                             <%platforms.forEach(platformList=> { %>                            
-                            <option value='<%platformList.id%>' ><%= platformList.name %></option>    
+                            <option value='<%platformList.id%>' 
+                                <%= platformList.id == product.platform_id ? 'selected' : '' %> > <%= platformList.name %></option>    
                             <% }) %>          
                        </select>            
                         
@@ -43,7 +44,7 @@
                         <input type="file" name="product_image" id="product_image">
                     </div>                                       
                         <label for="price">Precio</label>
-                        <input type="text" name="price "id= "price">                    
+                        <input type="text" name="price "id= "price" value="<%= product.price %>" required>                    
                 </div>
             </div>
             <div class="edit-button">
