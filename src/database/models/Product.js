@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         platform_id: {
             type: DataTypes.INTEGER
-        },        
+        },
+        description: {
+            type: DataTypes.STRING
+        },                
         price: {
             type: DataTypes.DECIMAL,
         },

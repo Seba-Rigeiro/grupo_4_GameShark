@@ -41,14 +41,7 @@ module.exports = {
       },
 
     createForm : (req , res ) => {
-        // db.Category.findAll()                    
-        //  .then (categories => {
-        // res.render('create', {categories})
-        //  })
-        // //  db.Platform.findAll()                    
-        //  .then (platforms => {
-        // res.render('create', {platforms})
-        //  })     
+             
         Promise.all ([
             db.Category.findAll(),
             db.Platform.findAll()                    
@@ -59,13 +52,14 @@ module.exports = {
     },
 
     create(req, res) {
-        const { name, category_id, platform_id, price } =  req.body
+        const { name, category_id, platform_id, description, price } =  req.body
         const { filename } = req.file
 
         db.Product.create({
             name, 
             category_id,
-            platform_id, 
+            platform_id,
+            description, 
             price,
             image: filename
         })
@@ -90,7 +84,7 @@ module.exports = {
 
     edit : (req , res ) => {
             const { id } = req.params
-            const { name, category_id, platform_id, price,  } =  req.body
+            const { name, category_id, platform_id, description, price,  } =  req.body
             
             db.Product.findByPk(id)
                 .then(product => {
@@ -99,6 +93,7 @@ module.exports = {
                     name,
                     category_id,
                     platform_id,
+                    description,
                     price,
                     image: 
                     {
@@ -106,7 +101,6 @@ module.exports = {
                         id
                         }
                     }
-                
             
                     .then(() => {
                         res.redirect('/products')
