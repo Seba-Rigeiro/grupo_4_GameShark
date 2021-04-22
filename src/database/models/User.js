@@ -5,7 +5,10 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        name: {
+        first_name: {
+            type: DataTypes.STRING,                      
+        },
+        last_name: {
             type: DataTypes.STRING,                      
         },
         email: {

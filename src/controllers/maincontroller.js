@@ -77,22 +77,28 @@ module.exports = {
 
     register : (req , res) => {
         let errors = validationResult(req); 
-        let passwordHash = bcrypt.hashSync(req.body.password, 10)     
+        // se utiliza esta propiedad para encriptar la contraseña. (recordar que hay que importarla)
+        let passwordHash = bcrypt.hashSync(req.body.password, 10)    
+        
+        // Si no hay errores se crea el usuario los datos que vienen en el body. Para la imagen se usa req.file 
         if (errors.isEmpty()) {
         
-            const { name, email, password } =  req.body
+            const { first_name, last_name, email, password,} =  req.body
+            const { filename } = req.file
             
             db.User.create({
-            name: name, 
+            first_name: first_name ,
+            last_name: last_name , 
             email: email, 
-            password: passwordHash
+            password: passwordHash,
+            image: filename
            
         
             })
             .then(user => {
                 res.redirect('/')
             })
-         
+            // Si hay errores, redirecciona nuevamente a la pagina de registro y los muestra.
          } else {
             res.render('register', { 
                 errors: errors.mapped(),

@@ -21,7 +21,8 @@ const upload = multer ({ storage: storage})
 
 // Validaciones para formulario de registro
 const validationsRegisterForm = [
-    body ('name').notEmpty().withMessage ('Ingresa Nombre y Apellido'),
+    body ('first_name').notEmpty().withMessage ('Ingrese su nombre'),
+    body ('last_name').notEmpty().withMessage ('Ingrese su Apellido'),
     body ('email').isEmail().withMessage ('Ingresa un email valido'),
     body ('password').isLength( { min:6, max:12 }).withMessage ('Ingresa una contraseña entre 6 y 12 caracteres'),
 ]

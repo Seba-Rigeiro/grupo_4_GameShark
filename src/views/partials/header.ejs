@@ -21,9 +21,9 @@
             <li><a href="/mycart"><i class="fas fa-shopping-cart"></i>Mi Carrito</a></li>
             <li><span></span></li>
             <li> <% if (locals.user) { %>
-                <span><%= user.name %></span>
+                <span><%= user.first_name %></span>
                 <img class="user_image" src= "/img/users/<%= user.image ? user.image : '' %>"
-                alt="<%= user.name %>">
+                alt="<%= user.first_name %>">
                 <a href="/logout">Salir</a>
             <% } else { %>
                 <a href="/login">Ingresa</a>

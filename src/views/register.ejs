@@ -16,14 +16,28 @@
                 <div class="create-form">
                    
                     <div class="field">
-                        <label for="name">Nombre Completo</label>
+                        <label for="first_name">Nombre</label>
                         <div>
-                            <input type="text" name='name' id="name"
-                              class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>" 
-                              value="<%= locals.oldFormData && oldFormData.name ? oldFormData.name : '' %>">
-                            <% if (locals.errors && errors.name) { %>
+                            <input type="text" name='first_name' id="first_name"
+                              class="form-control <%= locals.errors && errors.first_name ? 'is-invalid' : null %>" 
+                              value="<%= locals.oldFormData && oldFormData.first_name ? oldFormData.first_name : '' %>">
+                            <% if (locals.errors && errors.first_name) { %>
                                 <div class="text-danger">
-                                    <%= errors.name.msg  %>
+                                    <%= errors.first_name.msg  %>
+                                </div>
+                            <%  }  %>         
+                        </div>                    
+                    </div>
+
+                    <div class="field">
+                        <label for="last_name">Apellido</label>
+                        <div>
+                            <input type="text" name='last_name' id="last_name"
+                              class="form-control <%= locals.errors && errors.last_name ? 'is-invalid' : null %>" 
+                              value="<%= locals.oldFormData && oldFormData.last_name ? oldFormData.last_name : '' %>">
+                            <% if (locals.errors && errors.last_name) { %>
+                                <div class="text-danger">
+                                    <%= errors.last_name.msg  %>
                                 </div>
                             <%  }  %>         
                         </div>                    
