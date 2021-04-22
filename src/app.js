@@ -20,7 +20,7 @@ app.use (auth)
 const mainRouter = require('./routes/mainrouter');
 const productsRouter = require('./routes/productsrouter');
 
-app.use('/' , mainRouter);
-app.use('/' , productsRouter);
+app.use('/', mainRouter);
+app.use('/products', productsRouter);
 
 app.listen(3000 , () => console.log('THE SERVER IS RUNING'));

@@ -5,7 +5,7 @@ module.exports = {
     detail : (req , res ) => {
         db.Product.findByPk(req.params.id)
             .then(productDetail => {
-                res.render('detail', { product: productDetail })    
+                res.render('./products/detail', { product: productDetail })    
             })
                     
     },
@@ -18,7 +18,7 @@ module.exports = {
             ]
         })
          .then (productsList => 
-             res.render ("products", {productsList})
+             res.render ("./products/index", {productsList})
           )        
            
       },
@@ -30,14 +30,14 @@ module.exports = {
                 ['price', 'ASC']
             ],
             where: {
-                platform_id: true
+                platform_id: req.params.id
             }
            
-        })
+        }) 
          .then (productsList => 
-             res.render ("products", {productsList})
+             res.render ("./products/index", {productsList})
           )        
-          
+           
       },
 
     createForm : (req , res ) => {
@@ -54,20 +54,20 @@ module.exports = {
             db.Platform.findAll()                    
         ])
         .then (([categories, platforms]) => {
-            res.render('create', {categories, platforms}) 
+            res.render('./products/create', {categories, platforms}) 
         })
     },
 
     create(req, res) {
         const { name, category_id, platform_id, price } =  req.body
-        console.log ()
+        const { filename } = req.file
 
         db.Product.create({
             name, 
             category_id,
             platform_id, 
             price,
-            
+            image: filename
         })
             .then(product => {
                 res.redirect('/products')
@@ -84,14 +84,14 @@ module.exports = {
         ])
        
         .then (([product, categories, platforms]) => {
-            res.render('edit', {product, categories, platforms}) 
+            res.render('./products/edit', {product, categories, platforms}) 
         })
     },
 
     edit : (req , res ) => {
             const { id } = req.params
             const { name, category_id, platform_id, price,  } =  req.body
-
+            
             db.Product.findByPk(id)
                 .then(product => {
                     
@@ -116,6 +116,19 @@ module.exports = {
             
                     )}        
                 )},
+       
+    deleteProduct(req, res) {
+        // Busca el producto por el id que viene en la ruta, y lo borra    
+        db.Product.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+            // Direcciona al listado de productos
+            .then(() => {
+                res.redirect('/products')
+                })
+            }            
 
   
 } 

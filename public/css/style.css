@@ -50,6 +50,11 @@ header {
     border: 2px solid darkblue;
 }
 
+.mainnav .user_image {
+    width: 24px;
+    border-radius: 50%;
+}
+
 .searchbar {
     display: flex;
     align-items: center;
