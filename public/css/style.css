@@ -1,85 +1,39 @@
+/**********/
+/* Indice */
+/**********/
+
+/*
+ * - Variables
+ * - Estilos generales del sitio
+ *    - Header
+ *    - Main
+ *    - Footer
+ * - Paginas internas del sitio
+ *    - Página princial
+ * - 
+*/
+
+/*************/
+/* Variables */
+/*************/
+
+:root {
+    --header-height: 5rem;
+}
+
+/*******************************/
+/* Estilos generales del sitio */
+/*******************************/
+
 * { box-sizing: border-box; }
 
-.separate {
-    height: 1rem;
-}
-
 body {
-    font-family: 'Quicksand', sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    min-height: 100vh; /* Como mínimo el sito ocupa el 100% del alto disponible */
+
     margin: 0;
-}
-
-header {
-    border-bottom: 2px solid darkblue;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    position: fixed;
-    background-color: white;
-}
-/* HEADER */
-
-.logo {
-    font-style: italic;
-    color: darkblue;
-}
-
-.logo span {
-    color: cornflowerblue;
-}
-
-.burguericon {
-    display: none;
-}
-
-.mainnav ul{
-    display: flex;
-    align-items: center;
-    list-style: none;
-}
-
-.mainnav ul li {
-    margin: 0 1rem;
-}
-
-.mainnav ul li span {
-    border: 2px solid darkblue;
-}
-
-.mainnav .user_image {
-    width: 24px;
-    border-radius: 50%;
-}
-
-.searchbar {
-    display: flex;
-    align-items: center;
-}
-
-.searchbar input{
-    background-color: rgba(128, 128, 128, 0.212);
-    border: 2px solid transparent;
-    border-radius: 10rem;
-    font-weight: bold;
-    padding: 0 2rem;
-    height: 2rem;
-    width: 100%;
-    transition: all 0.2s;
-}
-
-.searchbar input:focus {
-    outline: none;
-    border: 2px solid cornflowerblue;
-    box-shadow: 0 0 10px cornflowerblue;
-}
-
-.searchbar input::placeholder {
-    padding-left: 1.5rem;
-    font-style: italic;
+    font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -88,35 +42,227 @@ a {
     font-weight: bold;
 }
 
-.searchbar span a{
-    position: relative;
-    color: grey;
-    right: 40px;
+/**********/
+/* Header */
+/**********/
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    position: fixed;
+    width: 100%;
+    height: var(--header-height);
+    
+    background-color: white;
+    border-bottom: 2px solid darkblue;
 }
 
-.searchbar span:hover a {
-    color: cornflowerblue;
+    .logo {
+        color: darkblue;
+    }
+
+    .logo span {
+        color: cornflowerblue;
+    }
+
+    .burguericon {
+        display: none;
+    }
+
+    .mainnav ul{
+        display: flex;
+        align-items: center;
+        list-style: none;
+    }
+
+    .mainnav ul li {
+        margin: 0 1rem;
+    }
+
+    .mainnav ul li span {
+        border: 2px solid darkblue;
+    }
+
+    .mainnav .user_image {
+        width: 24px;
+        border-radius: 50%;
+    }
+
+    .searchbar {
+        display: flex;
+        align-items: center;
+    }
+
+    .searchbar input{
+        background-color: rgba(128, 128, 128, 0.212);
+        border: 2px solid transparent;
+        border-radius: 10rem;
+        font-weight: bold;
+        padding: 0 2rem;
+        height: 2rem;
+        width: 100%;
+        transition: all 0.2s;
+    }
+
+    .searchbar input:focus {
+        outline: none;
+        border: 2px solid cornflowerblue;
+        box-shadow: 0 0 10px cornflowerblue;
+    }
+
+    .searchbar input::placeholder {
+        padding-left: 1.5rem;
+        font-style: italic;
+    }
+
+    .searchbar span a{
+        position: relative;
+        color: grey;
+        right: 40px;
+    }
+
+    .searchbar span:hover a {
+        color: cornflowerblue;
+    }
+
+    .rbutton {
+        color: darkblue;
+        background-color: cornflowerblue;
+        padding: 10% 15%;
+        border-radius: 20px;
+        transition: all 0.3s;
+    }
+
+    .rbutton:hover {
+        background-color: springgreen;
+    }
+
+    .button i {
+        margin-right: 1rem;
+        font-size: 2rem;
+    }
+
+/********/
+/* Main */
+/********/
+
+main {
+    flex-grow: 1; /* Si tenemos espacio disponible, el main crece para ocuparlo */ 
+    margin-top: var(--header-height); /* Como el header está fixed, tenemos que bajar el main */
 }
 
-.rbutton {
+/**********/
+/* Footer */
+/**********/
+
+footer {
+    border-top: 2px solid darkblue;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 20rem;
+    background-color: rgba(128, 128, 128 , 0.212);
+}
+
+footer h3 {
+    font-style: italic;
+}
+
+.footernav {
+    width: 33%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footernav ul {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    text-align: center;
+}
+
+.footernav li {
+    margin: .5rem 0;
+}
+
+.socialmedia {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icons {
+    margin-top: 1rem;
+}
+
+.icons img {
+    margin: 0 .5rem;
+    width: 5rem;
+    border-radius: 50%;
+}
+
+.notice {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notice input {
+    background-color: rgba(128, 128, 128, 0.212);
+    border: 2px solid transparent;
+    border-radius: 10rem;
+    font-weight: bold;
+    margin: 2rem 0;
+    padding: 0 2rem;
+    height: 2rem;
+    width: 70%;
+    transition: all 0.2s;
+}
+
+.notice input:focus {
+    outline: none;
+    border: 2px solid cornflowerblue;
+    box-shadow: 0 0 10px cornflowerblue;
+}
+
+.notice input::placeholder {
+    padding-left: .5rem;
+    font-style: italic;
+}
+
+.notice button {
+    font-weight: bolder;
+    border: none;
     color: darkblue;
     background-color: cornflowerblue;
-    padding: 10% 15%;
+    padding: .5rem 2rem;
     border-radius: 20px;
     transition: all 0.3s;
+    box-shadow: 0 0 10px cornflowerblue;
 }
 
-.rbutton:hover {
+.notice button:hover {
+    box-shadow: 0 0 10px springgreen;
     background-color: springgreen;
 }
 
-.button i {
-    margin-right: 1rem;
-    font-size: 2rem;
-}
+/********************/
+/* Páginas internas */
+/********************/
 
-
-/* HERO */
+/* Home */
 
 .hero {
     margin-top: 4rem;
@@ -234,107 +380,6 @@ a {
     background-image: linear-gradient(rgba(100, 148, 237, 0.0) , rgba(100, 148, 237)) , url('/img/accitem.jpg');
     background-position: center;
     background-size: cover;
-}
-
-footer {
-    border-top: 2px solid darkblue;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: flex-start;
-    height: 20rem;
-    background-color: rgba(128, 128, 128 , 0.212);
-}
-
-footer h3 {
-    font-style: italic;
-}
-
-.footernav {
-    width: 33%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footernav ul {
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-    text-align: center;
-}
-
-.footernav li {
-    margin: .5rem 0;
-}
-
-.socialmedia {
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.icons {
-    margin-top: 1rem;
-}
-
-.icons img {
-    margin: 0 .5rem;
-    width: 5rem;
-    border-radius: 50%;
-}
-
-.notice {
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.notice input {
-    background-color: rgba(128, 128, 128, 0.212);
-    border: 2px solid transparent;
-    border-radius: 10rem;
-    font-weight: bold;
-    margin: 2rem 0;
-    padding: 0 2rem;
-    height: 2rem;
-    width: 70%;
-    transition: all 0.2s;
-}
-
-.notice input:focus {
-    outline: none;
-    border: 2px solid cornflowerblue;
-    box-shadow: 0 0 10px cornflowerblue;
-}
-
-.notice input::placeholder {
-    padding-left: .5rem;
-    font-style: italic;
-}
-
-.notice button {
-    font-weight: bolder;
-    border: none;
-    color: darkblue;
-    background-color: cornflowerblue;
-    padding: .5rem 2rem;
-    border-radius: 20px;
-    transition: all 0.3s;
-    box-shadow: 0 0 10px cornflowerblue;
-}
-
-.notice button:hover {
-    box-shadow: 0 0 10px springgreen;
-    background-color: springgreen;
 }
 
 /* REGISTER.HTML */

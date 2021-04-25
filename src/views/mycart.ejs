@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head.ejs') %>
+<%- include('partials/head.ejs') %>
 <body>
-    
     <%- include('partials/header.ejs') %>
 
     <main class="mycartcont">
@@ -42,20 +41,19 @@
                 </div>
             </div>
         </div>
+
+        <section class="pay">
+            <h2>SELECCIONA TU METODO DE PAGO</h2>
+            <div class="payitems">
+                <a href="#"><i class="fab fa-cc-paypal"></i>PayPal</a>
+                <a href="#"><i class="fas fa-credit-card"></i>Tarjeta de credito</a>
+                <a href="#"><i class="far fa-credit-card"></i>Tarjeta de debito</a>
+                <a href="#"><i class="fas fa-money-bill"></i>Efectivo en domicilio</a>
+    
+            </div>
+        </section>
     </main>
 
-    <section class="pay">
-        <h2>SELECCIONA TU METODO DE PAGO</h2>
-        <div class="payitems">
-            <a href="#"><i class="fab fa-cc-paypal"></i>PayPal</a>
-            <a href="#"><i class="fas fa-credit-card"></i>Tarjeta de credito</a>
-            <a href="#"><i class="far fa-credit-card"></i>Tarjeta de debito</a>
-            <a href="#"><i class="fas fa-money-bill"></i>Efectivo en domicilio</a>
-
-        </div>
-    </section>
-
-    <%- include('partials/footer.ejs') %>
-               
+    <%- include('partials/footer.ejs') %>      
 </body>
 </html>
