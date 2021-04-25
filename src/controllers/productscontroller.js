@@ -83,33 +83,34 @@ module.exports = {
     },
 
     edit : (req , res ) => {
-            const { id } = req.params
-            const { name, category_id, platform_id, description, price,  } =  req.body
+        const { id } = req.params
+        const { name, category_id, platform_id, description, price, } =  req.body
+        
+        db.Product.findByPk(id)
+        .then(product => {
+            const productImage = product.image
             
-            db.Product.findByPk(id)
-                .then(product => {
+            db.Product.update({
+                name,
+                category_id,
+                platform_id,
+                description,
+                price,
+                image: req.file ? req.file.filename : productImage
+            },
+
+            {
+                where: { id }
+            })
+    
+            .then(() => {
+                res.redirect('/products')
+            })
+            
+            .catch(err => console.log(err))
+        })    
                     
-                    db.Product.update({
-                    name,
-                    category_id,
-                    platform_id,
-                    description,
-                    price,
-                    image: 
-                    {
-                        where: {    
-                        id
-                        }
-                    }
-            
-                    .then(() => {
-                        res.redirect('/products')
-                    })
-                    .catch(err => console.log(err))
-                }    
-            
-                    )}        
-                )},
+    },
        
     deleteProduct(req, res) {
         // Busca el producto por el id que viene en la ruta, y lo borra    
@@ -119,7 +120,7 @@ module.exports = {
                 }
             })
             // Direcciona al listado de productos
-            .then(() => {
+            .then((response) => {
                 res.redirect('/products')
                 })
             }            

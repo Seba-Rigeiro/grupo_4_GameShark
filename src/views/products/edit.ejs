@@ -7,49 +7,57 @@
             <h1>Editar Producto </h1>
         </div>
 
-        <form ?_method=PUT action="/edit"  enctype="multipart/form-data">
+        <form method='POST' action="/products/<%= product.id %>?_method=PUT"  enctype="multipart/form-data">
             <div class="edit-form-container">
                 <div class="edit-form">
+                    
                     <div>
                         <label for="name">Nombre de producto</label>
-                        <input type="text" name="name" value="<%= product.name %>" required>
+                        <input type="text" name="name" value="<%=product.name %>" required>
                     </div>
+
                     <div>
                        <label for="name">Categoria</label>
                         <select name="category_id">
                             <option value="">Elegí una opcion</option>
                             <%categories.forEach(categoryList=> { %>                            
-                            <option value='<%categoryList.id%>'
-                                <%= categoryList.id == product.category_id ? 'selected' : '' %> > <%= categoryList.name %></option>    
+                            <option value="<%= categoryList.id%>"
+                                <%=categoryList.id == product.category_id ? 'selected' : '' %> > <%=categoryList.name %></option>    
                             <% }) %>                         
                         </select>          
                     </div>
+
                     <div>                                              
                         <label for="name">Plataforma</label>
-                        <select name="platform" id="platform">
+                        <select name="platform_id" id="platform_id">
                             <option value="">Elegí una opcion</option>
                             <%platforms.forEach(platformList=> { %>                            
-                            <option value='<%platformList.id%>' 
-                                <%= platformList.id == product.platform_id ? 'selected' : '' %> > <%= platformList.name %></option>    
+                            <option value="<%=platformList.id%>"
+                                <%=platformList.id == product.platform_id ? 'selected' : '' %> > <%=platformList.name %></option>    
                             <% }) %>          
                        </select>            
-                        
                     </div>
+
                     <div>
                         <label for="description">Descripcion</label>
-                        <textarea name="description" id="description" value="<%= product.description %>" required></textarea>
+                        <textarea name="description" id="description" required><%=product.description%></textarea>
                     </div>
+
+                    <div>                                       
+                    <label for="price">Precio</label>
+                    <input type="number" name="price " id="price" value="<%=product.price%>" required>                    
+                    </div>
+
                     <div>
                         <label for="name">Imagen</label>
                         <input type="file" name="product_image" id="product_image">
-                    </div>                                       
-                        <label for="price">Precio</label>
-                        <input type="text" name="price " id="price" value="<%= product.price %>" required>                    
-                </div>
-            </div>
-            <div class="edit-button">
-                <button type="submit">Editar</button>
-            </div>
+                    </div>
+
+                    <div class="edit-button">
+                        <button type="submit">Editar</button>
+                    </div>
+                </div>   
+            </div>    
         </form>
             
     </main>

@@ -27,7 +27,7 @@ router.get('/' , productsController.products);
 
 // Rutas para editar producto
 router.get('/edit/:id' , productsController.editForm);
-router.put('/' , productsController.edit);
+router.put('/:id' , upload.single ('product_image'), productsController.edit);
 
 //Ruta para borrar producto
 router.delete('/:id' , productsController.deleteProduct);
