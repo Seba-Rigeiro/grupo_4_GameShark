@@ -4,50 +4,38 @@
 <body>
     <%- include('partials/header.ejs') %>
 
-    <main class="create-container" id="login-bkg">
-        <div class="create-title">
-            <h1>Log In</h1>
-        </div>
-        
-        <form method="POST" action="/login" >
+    <main>
+        <div class="form-container">
+            <form method="POST" action="/login" >
             
-            <div class="login-form-container">
-                <div class="login-form">
-                   
-                                        
-                    <div class="field">
-                        <label for="email">Email</label>
-                        <div>
-                            <input type="email" name= 'email'id="email"
-                            value="<%= locals.oldFormData && oldFormData.email ? oldFormData.email : '' %>">
-                            <% if (locals.errors && errors.email) { %>
-                                <div class="text-danger">
-                                    <%= errors.email.msg  %>
-                                </div>
-                            <%  }  %>         
+                <h1 class="form-title">Log In</h1>
+                                   
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" name= 'email'id="email"
+                    value="<%= locals.oldFormData && oldFormData.email ? oldFormData.email : '' %>">
+                    <% if (locals.errors && errors.email) { %>
+                        <div class="field-feedback">
+                            <%= errors.email.msg  %>
                         </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label for="pass">Contraseña</label>
-                        <div>
-                            <input type="password" name= 'password' id="password">
-                            <% if (locals.errors && errors.password) { %>
-                                <div class="text-danger">
-                                    <%= errors.password.msg  %>
-                                </div>
-                            <%  }  %>         
-                        </div>    
-                    </div>
-                                       
+                    <%  }  %>         
                 </div>
-            </div>
-            
-            <div class="button">
-                <button type="submit"> INGRESAR  </button>
                 
-            </div>
-        </form>      
+                <div class="form-field">
+                    <label for="pass">Contraseña</label>
+                    <input type="password" name= 'password' id="password">
+                    <% if (locals.errors && errors.password) { %>
+                        <div class="field-feedback">
+                            <%= errors.password.msg  %>
+                        </div>
+                    <%  }  %>         
+                </div>
+                                    
+                <div class="form-actions">
+                    <button type="submit" class="button">Ingresar</button>      
+                </div>
+            </form>      
+        </div>            
     </main>
 
     <%- include('partials/footer.ejs') %>           
