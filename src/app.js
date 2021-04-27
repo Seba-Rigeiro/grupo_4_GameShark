@@ -19,8 +19,10 @@ app.use (auth)
 
 const mainRouter = require('./routes/mainrouter');
 const productsRouter = require('./routes/productsrouter');
+const apiRouter = require('./routes/apirouter');
 
 app.use('/', mainRouter);
 app.use('/products', productsRouter);
+app.use('/api', apiRouter)
 
 app.listen(3000 , () => console.log('THE SERVER IS RUNNING'));

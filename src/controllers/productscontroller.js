@@ -84,7 +84,7 @@ module.exports = {
 
     edit : (req , res ) => {
         const { id } = req.params
-        const { name, category_id, platform_id, description, price, } =  req.body
+        const { name, category_id, platform_id, description, price } =  req.body
         
         db.Product.findByPk(id)
         .then(product => {
