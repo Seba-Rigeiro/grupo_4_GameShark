@@ -4,20 +4,22 @@
 <body>
     <%- include('../partials/header.ejs') %>
 
-    <main class="create-container">
-        <div class="create-title">
-            <h1>Crea un Producto</h1>
-        </div>
-         <form method="POST" action="/create" enctype="multipart/form-data">
-            <div class="create-form-container">
-                <div class="create-form">
-                    <div>
+    <main>
+        
+        <div class="form-container">
+            
+            <form method="POST" action="/create" enctype="multipart/form-data">
+                
+                    <h1 class="form-title">Crea un Producto</h1>
+                    
+                    <div class="form-field">
                         <label for="name">Nombre de producto</label>
-                        <input type="text" name="name">
+                        <input class="create-form-input" type="text" name="name">
                     </div>
-                    <div>
+                    
+                    <div class="form-field">
                        <label for="name">Categoria</label>
-                        <select name="category_id">
+                        <select class="create-form-input" name="category_id">
                             <option value="">Elegí una opcion</option>
                             <% console.log(categories) %> 
                             <%categories.forEach(categoryList=> { %>                            
@@ -25,32 +27,38 @@
                             <% }) %>                         
                         </select>          
                     </div>
-                    <div>                                              
+                    
+                    <div class="form-field">                                              
                         <label for="name">Plataforma</label>
-                        <select name="platform_id" id="platform_id">
+                        <select class="create-form-input" name="platform_id" id="platform_id">
                             <option value="">Elegí una opcion</option>
                             <%platforms.forEach(platformList=> { %>                            
                             <option value='<%= platformList.id %>' ><%= platformList.name %></option>    
                             <% }) %>          
                        </select>            
-                        
                     </div>
-                    <div>
+                    
+                    <div class="form-field">
                         <label for="description">Descripcion</label>
-                        <textarea name="description" id="description"></textarea>
+                        <textarea class="create-form-input" name="description" id="description"></textarea>
                     </div>
-                    <div>
+                    
+                    <div class="form-field">
                         <label for="name">Imagen</label>
-                        <input type="file" name="product_image" id="product_image">
-                    </div>                                       
+                        <input class="create-form-input" type="file" name="product_image" id="product_image">
+                    </div> 
+
+                    <div class="form-field">                                      
                         <label for="price">Precio</label>
-                        <input type="number" name="price" id="price">                    
-                </div>
-            </div>
-            <div class="create-button">
-                <button type="submit">Crear Producto</button>
-            </div>
-        </form>
+                        <input class="create-form-input" type="number" name="price" id="price">                    
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="button">Crear Producto</button>
+                    </div>
+
+            </form>
+        </div>
     </main>
 
     <%- include('../partials/footer.ejs') %>
