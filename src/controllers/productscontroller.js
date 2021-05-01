@@ -53,7 +53,7 @@ module.exports = {
 
     create(req, res) {
         const { name, category_id, platform_id, description, price } =  req.body
-        const { filename } = req.file
+        const productImageDefault = "product-image-default.jpg"
 
         db.Product.create({
             name, 
@@ -61,7 +61,7 @@ module.exports = {
             platform_id,
             description, 
             price,
-            image: filename
+            image: req.file ? filename : productImageDefault
         })
             .then(product => {
                 res.redirect('/products')

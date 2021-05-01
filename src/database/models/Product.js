@@ -23,23 +23,23 @@ module.exports = (sequelize, DataTypes) => {
         image: {
             type: DataTypes.STRING ,
         },
-        },   
-        {
+    },   
+    {
         tableName: 'products',
         timestamps: true
-                 
-        })
+                
+    })
 
-        Product.associate = (models) => {
-            Product.belongsTo (models.Category, {
-                as: 'category',
-                foreingKey: 'category_id'
-            })
-            Product.belongsTo (models.Platform, {
-                as: 'platform',
-                foreingKey: 'platform_id'
-            })
-        }
-       
-    return Product;
+    Product.associate = (models) => {
+        Product.belongsTo (models.Category, {
+            as: 'category',
+            foreingKey: 'category_id'
+        })
+        Product.belongsTo (models.Platform, {
+            as: 'platform',
+            foreingKey: 'platform_id'
+        })
     }
+    
+    return Product;
+}
