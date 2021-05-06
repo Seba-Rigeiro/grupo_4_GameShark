@@ -2,14 +2,14 @@ const db = require('../../database/models')
 
 module.exports = {
 
-    products: (req,res) => { 
+    index: (req,res) => { 
         db.Product.findAll()
             .then(products => {
                 res
                     .status(200)
                     .json ({
                         meta: {
-                           count : products.length
+                           count : products.length,
                             
                         },
                         data: products,
@@ -53,4 +53,20 @@ module.exports = {
             })
         })
     },
+
+    lastProduct: (req,res) => {
+        db.Product.findAll({
+            limit: 1,
+            order: [ [ 'createdAt', 'DESC' ]]
+          }).then(function(product){
+            res
+            .status(200)
+            .json ({
+                
+                data: product,
+                status: 'success'
+        })
+          }); 
+    }
+
 }

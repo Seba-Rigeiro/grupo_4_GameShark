@@ -21,10 +21,14 @@ const mainRouter = require('./routes/mainrouter');
 const productsRouter = require('./routes/productsrouter');
 const productRouter = require('./routes/api/productRouter');
 const userRouter = require('./routes/api/userRouter');
+const platformRouter = require('./routes/api/platformRouter');
+const categoryRouter = require('./routes/api/categoryRouter');
 
 app.use('/', mainRouter);
 app.use('/products', productsRouter);
 app.use('/api', productRouter);
 app.use('/api', userRouter);
+app.use('/api', platformRouter);
+app.use('/api', categoryRouter);
 
 app.listen(3000 , () => console.log('THE SERVER IS RUNNING'));
