@@ -11,8 +11,10 @@
             </div>
             <div class="detail-content">
                 <div class="detail-title">
-                    <a href="/products/edit/<%= product.id %>">(ADMIN) EDITAR</a>
-                    <a href="/products/<%= product.id %>">BORRAR</a>
+                    <a href="/products/edit/<%= product.id %>" class="butto">EDITAR</a>
+                    <form method="POST" action="/products/<%= product.id %>?_method=delete"> 
+                        <button>BORRAR</button>
+                    </form>
                     <h2> <%= product.name %>  </h2>
                    
                     <h2 class="detail-price">$ <%= product.price %></h2>
