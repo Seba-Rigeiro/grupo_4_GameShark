@@ -3,6 +3,8 @@ const router = express.Router();
 const multer = require ('multer');
 const path = require ('path')
 const productsController = require('../controllers/productscontroller');
+const validations = require('../middlewares/validations');
+
 
 const storage = multer.diskStorage ({
     // Indica donde se guarda la nueva imagen
@@ -16,11 +18,23 @@ const storage = multer.diskStorage ({
     }
 })
 
-const upload = multer ({ storage: storage})
+const upload = multer ({ 
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+          cb(null, true);
+        } else {
+          cb(null, false);
+          let error = 'Solo se aceptan formatos .png, .jpg, .jpeg';
+          return cb(error);
+         
+        } 
+      }
+})
 
 // Rutas creacion de productos con multer para las imagenes
 router.get('/create' , productsController.createForm);
-router.post('/' , upload.single ('product_image'), productsController.create);
+router.post('/' , upload.single ('product_image'), validations.productCreate, productsController.create);
 
 // Ruta para listar productos
 router.get('/' , productsController.products);

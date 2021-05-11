@@ -10,54 +10,78 @@
             
             <form method="POST" action="/products" enctype="multipart/form-data">
                 
-                    <h1 class="form-title">Crea un Producto</h1>
-                    
-                    <div class="form-field">
-                        <label for="name">Nombre de producto</label>
-                        <input class="create-form-input" type="text" name="name">
-                    </div>
-                    
-                    <div class="form-field">
-                       <label for="name">Categoria</label>
-                        <select class="create-form-input" name="category_id">
-                            <option value="">Elegí una opcion</option>
-                            <% console.log(categories) %> 
-                            <%categories.forEach(categoryList=> { %>                            
-                            <option value='<%= categoryList.id %>' ><%= categoryList.name %></option>    
-                            <% }) %>                         
-                        </select>          
-                    </div>
-                    
-                    <div class="form-field">                                              
-                        <label for="name">Plataforma</label>
-                        <select class="create-form-input" name="platform_id" id="platform_id">
-                            <option value="">Elegí una opcion</option>
-                            <%platforms.forEach(platformList=> { %>                            
-                            <option value='<%= platformList.id %>' ><%= platformList.name %></option>    
-                            <% }) %>          
-                       </select>            
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="description">Descripcion</label>
-                        <textarea class="create-form-input" name="description" id="description"></textarea>
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="name">Imagen</label>
-                        <input class="create-form-input" type="file" name="product_image" id="product_image">
-                    </div> 
+                <h1 class="form-title">Crea un Producto</h1>
+                
+                <div class="form-field">
+                    <label for="name">Nombre de producto</label>
+                    <input class="create-form-input" type="text" name="name"
+                    value="<%= locals.oldFormData && oldFormData.name ? oldFormData.name : '' %>">
+                    <% if (locals.errors && errors.name) { %>
+                        <div class="field-feedback">
+                            <%=errors.name.msg%>
+                        </div>
+                    <%  }  %>         
+                </div>
+                
+                <div class="form-field">
+                   <label for="name">Categoria</label>
+                    <select class="create-form-input" name="category_id">
+                        <option value="">Elegí una opcion</option>
+                        <%categories.forEach(categoryList=> { %>                            
+                        <option value='<%= categoryList.id %>' ><%= categoryList.name %></option>    
+                        <% }) %>                         
+                    </select>          
+                </div>
+                
+                <div class="form-field">                                              
+                    <label for="name">Plataforma</label>
+                    <select class="create-form-input" name="platform_id" id="platform_id">
+                        <option value="">Elegí una opcion</option>
+                        <%platforms.forEach(platformList=> { %>                            
+                        <option value='<%= platformList.id %>' ><%= platformList.name %></option>    
+                        <% }) %>          
+                   </select>            
+                </div>
+                
+                <div class="form-field">
+                    <label for="description">Descripcion</label>
+                    <textarea class="create-form-input" name="description" id="description" required
+                        value="<%= locals.oldFormData && oldFormData.description ? oldFormData.description : '' %>">
+                    </textarea>
+                    <% if (locals.errors && errors.description) { %>
+                        <div class="field-feedback">
+                            <%=errors.description.msg%>
+                        </div>
+                    <%  }  %>         
+                </div>
+                
+                <div class="form-field">
+                    <label for="name">Imagen</label>
+                    <input class="create-form-input" type="file" name="product_image" id="product_image"
+                    value="<%= locals.oldFormData && oldFormData.product_image ? oldFormData.product_image : '' %>">
+                    <% if (locals.errors && errors.product_image) { %>
+                        <div class="field-feedback">
+                            <%=errors.product_image.msg%>
+                        </div>
+                    <%  }  %>         
+                </div> 
 
-                    <div class="form-field">                                      
-                        <label for="price">Precio</label>
-                        <input class="create-form-input" type="number" name="price" id="price">                    
-                    </div>
+                <div class="form-field">                                      
+                    <label for="price">Precio</label>
+                    <input class="create-form-input" type="number" name="price" id="price"
+                    value="<%= locals.oldFormData && oldFormData.price ? oldFormData.price : '' %>">
+                    <% if (locals.errors && errors.price) { %>
+                        <div class="field-feedback">
+                            <%= errors.price.msg  %>
+                        </div>
+                    <%  }  %>                             
+                </div>
 
-                    <div class="form-actions">
-                        <button type="submit" class="button">Crear Producto</button>
-                    </div>
+                <div class="form-actions">
+                    <button type="submit" class="button">Crear Producto</button>
+                </div>
 
-            </form>
+        </form>
         </div>
     </main>
 

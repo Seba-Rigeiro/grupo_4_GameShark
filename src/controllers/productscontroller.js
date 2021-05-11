@@ -1,5 +1,6 @@
 const { promiseImpl } = require('ejs')
 const db = require('../database/models')
+const { validationResult } = require ('express-validator');
 
 module.exports = {
     detail : (req , res ) => {
@@ -44,29 +45,47 @@ module.exports = {
              
         Promise.all ([
             db.Category.findAll(),
-            db.Platform.findAll()                    
+            db.Platform.findAll()    
+                            
         ])
         .then (([categories, platforms]) => {
             res.render('./products/create', {categories, platforms}) 
         })
     },
 
-    create(req, res) {
-        const { name, category_id, platform_id, description, price } =  req.body
-        const productImageDefault = "product-image-default.jpg"
-
-        db.Product.create({
-            name, 
-            category_id,
-            platform_id,
-            description, 
-            price,
-            image: req.file ? filename : productImageDefault
-        })
-            .then(product => {
-                res.redirect('/products')
+    create : (req, res) => {
+        let errors = validationResult(req)
+       
+        if (errors.isEmpty()) {
+            const { name, category_id, platform_id, description, price } =  req.body
+            const productImageDefault = "product-image-default.jpg"
+    
+            db.Product.create({
+                name, 
+                category_id,
+                platform_id,
+                description, 
+                price,
+                image: req.file ? filename : productImageDefault
             })
-            .catch(err => console.log(err))    
+                .then(product => {
+                    res.redirect('/products')
+                })
+        } else {
+            Promise.all ([
+                db.Category.findAll(),
+                db.Platform.findAll()    
+                                
+            ])
+            .then (([categories, platforms]) => {
+                res.render('./products/create', {categories: categories, platforms: platforms,  
+                    errors: errors.mapped(),
+                    oldFormData: req.body
+                }) 
+            })
+        
+        }
+
     },
 
     editForm : (req , res ) => {
