@@ -10,7 +10,7 @@
                 <h1>Registrate</h1>        
             </div>
             
-            <form method="POST" action="/register" enctype="multipart/form-data" >
+            <form method="POST" action="/register" enctype="multipart/form-data" id="form-register" >
                 
                 <div class="create-form-container">
                     <div class="create-form">
@@ -19,13 +19,15 @@
                             <label for="first_name">Nombre</label>
                             <div>
                                 <input type="text" name='first_name' id="first_name"
-                                  class="form-control <%= locals.errors && errors.first_name ? 'is-invalid' : null %>" 
+                                  class="form-control" 
                                   value="<%= locals.oldFormData && oldFormData.first_name ? oldFormData.first_name : '' %>">
-                                <% if (locals.errors && errors.first_name) { %>
-                                    <div class="text-danger">
-                                        <%= errors.first_name.msg  %>
+                                
+                                    <div class="text-danger error-first-name">
+                                        <% if (locals.errors && errors.first_name) { %>
+                                            <%= errors.first_name.msg  %>
+                                            <%  }  %> 
                                     </div>
-                                <%  }  %>         
+                                        
                             </div>                    
                         </div>
     
@@ -33,13 +35,14 @@
                             <label for="last_name">Apellido</label>
                             <div>
                                 <input type="text" name='last_name' id="last_name"
-                                  class="form-control <%= locals.errors && errors.last_name ? 'is-invalid' : null %>" 
+                                  class="form-control" 
                                   value="<%= locals.oldFormData && oldFormData.last_name ? oldFormData.last_name : '' %>">
-                                <% if (locals.errors && errors.last_name) { %>
-                                    <div class="text-danger">
-                                        <%= errors.last_name.msg  %>
+                               
+                                    <div class="text-danger error-last-name">
+                                        <% if (locals.errors && errors.last_name) { %>
+                                            <%= errors.last_name.msg  %>
+                                            <%  }  %>         
                                     </div>
-                                <%  }  %>         
                             </div>                    
                         </div>
                         
@@ -48,11 +51,12 @@
                             <div>
                                 <input type="email" name= 'email'id="email"
                                 value="<%= locals.oldFormData && oldFormData.email ? oldFormData.email : '' %>">
-                                <% if (locals.errors && errors.email) { %>
-                                    <div class="text-danger">
+                               
+                                    <div class="text-danger error-email">
+                                        <% if (locals.errors && errors.email) { %>
                                         <%= errors.email.msg  %>
+                                        <%  }  %>         
                                     </div>
-                                <%  }  %>         
                             </div>
                         </div>
                         
@@ -60,11 +64,12 @@
                             <label for="pass">Contraseña</label>
                             <div>
                                 <input type="password" name= 'password' id="password">
-                                <% if (locals.errors && errors.password) { %>
-                                    <div class="text-danger">
-                                        <%= errors.password.msg  %>
+                                
+                                    <div class="text-danger error-password">
+                                        <% if (locals.errors && errors.password) { %>
+                                            <%= errors.password.msg  %>
+                                            <%  }  %>         
                                     </div>
-                                <%  }  %>         
                             </div>    
                         </div>
     
@@ -83,7 +88,8 @@
             </form>      
         </section>
     </main>
-
+    
     <%- include('partials/footer.ejs') %>           
+    <script src="scripts/register.js"></script>
 </body>
 </html>
