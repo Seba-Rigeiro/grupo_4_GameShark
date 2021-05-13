@@ -1,6 +1,7 @@
 const { promiseImpl } = require('ejs')
 const db = require('../database/models')
 const { validationResult } = require ('express-validator');
+const ACCEPTED_IMAGE_MIMETYPES = [ "image/png" , "image/jpg", "image/jpeg"]
 
 module.exports = {
     detail : (req , res ) => {
@@ -56,21 +57,48 @@ module.exports = {
     create : (req, res) => {
         let errors = validationResult(req)
        
-        if (errors.isEmpty()) {
+       console.log ('req.file', req.file)
+       if (errors.isEmpty()) {
             const { name, category_id, platform_id, description, price } =  req.body
-            const productImageDefault = "product-image-default.jpg"
-    
-            db.Product.create({
-                name, 
-                category_id,
-                platform_id,
-                description, 
-                price,
-                image: req.file ? filename : productImageDefault
-            })
-                .then(product => {
-                    res.redirect('/products')
+            let image = "product-image-default.jpg"
+            
+            if (req.file && ACCEPTED_IMAGE_MIMETYPES.includes(req.file.mimetype) || !req.file) {
+                
+
+                db.Product.create({
+                    name, 
+                    category_id,
+                    platform_id,
+                    description, 
+                    price,
+                    image: req.file ? req.file.filename : image
                 })
+                    .then(product => {
+                        return res.redirect('/products')
+                    })
+            } else {
+                Promise.all ([
+                    db.Category.findAll(),
+                    db.Platform.findAll()    
+                                    
+                ])
+                .then (([categories, platforms]) => {
+                    return res.render('./products/create', {categories: categories, platforms: platforms,  
+                        errors: {
+                            product_image: {
+                                value: '',
+                                msg: 'solo se aceptan archivos .jpg, jpeg, png',
+                                param: 'password',
+                                location: 'body'
+                              }
+                        },
+                        oldFormData: req.body
+                    }) 
+                }) 
+            }
+
+    
+            
         } else {
             Promise.all ([
                 db.Category.findAll(),
@@ -78,7 +106,7 @@ module.exports = {
                                 
             ])
             .then (([categories, platforms]) => {
-                res.render('./products/create', {categories: categories, platforms: platforms,  
+                return res.render('./products/create', {categories: categories, platforms: platforms,  
                     errors: errors.mapped(),
                     oldFormData: req.body
                 }) 

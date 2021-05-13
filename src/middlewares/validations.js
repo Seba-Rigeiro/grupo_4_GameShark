@@ -31,6 +31,12 @@ module.exports = {
             .notEmpty().withMessage ('Ingrese el nombre del producto').bail()
             .isLength({ min:2,}).withMessage ('Debe tener al menos 2 letras')
             .isLength({ max:30,}).withMessage ('No puede ser mayor a 30 letras'),
+
+        body ('category_id')
+            .notEmpty().withMessage ('Debes seleccionar una categoria'),   
+
+        body ('platform_id')
+            .notEmpty().withMessage ('Debes seleccionar una plataforma'),
         
         body ('description')
             .notEmpty().withMessage ('Ingrese una descripcion del producto').bail()
@@ -38,8 +44,8 @@ module.exports = {
             .isLength({ max:150,}).withMessage ('No puede superar 500 caracteres'),
         
         /* body ('product_image')
-            .isMimeType('image/jpeg' || 'image/jpg' ).withMessage ('Los formatos aceptados son .jpg'),
-             */
+            .isMimeType('image/jpeg' || 'image/jpg' ).withMessage ('Los formatos aceptados son .jpg'), */
+            
         
         body ('price')
             .notEmpty().withMessage ('Debe ingresar un precio').bail()
