@@ -4,55 +4,83 @@
 <body>
     <%- include('../partials/header.ejs') %>
 
-    <main class="create-container">
-        <div class="create-title">
-            <h1>Editar Producto </h1>
-        </div>
-
-        <form method='POST' action="/products/<%= product.id %>?_method=PUT"  enctype="multipart/form-data">
-            <div class="edit-form-container">
-                <div class="edit-form">
+    <main>
+        
+        <div class= "form-container">
+        
+            <form method='POST' action="/products/<%= product.id %>?_method=PUT"  enctype="multipart/form-data">
+               
+                <h1 class="form-title">Editar Producto </h1>
                     
-                    <div>
+                    <div class="form-field">
                         <label for="name">Nombre de producto</label>
-                        <input type="text" name="name" value="<%=product.name %>" required>
+                        <input class= "edit-form-input" type="text" name="name" value="<%=product.name %>">
+
+                            <div class="field-feedback">
+                                <% if (locals.errors && errors.name) { %>
+                                    <%=errors.name.msg%>
+                                <%  }  %>         
+                            </div>
                     </div>
 
-                    <div>
+                    <div class="form-field">
                        <label for="name">Categoria</label>
-                        <select name="category_id">
+                        <select class= "edit-form-input" name="category_id">
                             <option value="">Elegí una opcion</option>
                             <%categories.forEach(categoryList=> { %>                            
                             <option value="<%= categoryList.id%>"
                                 <%=categoryList.id == product.category_id ? 'selected' : '' %> > <%=categoryList.name %></option>    
                             <% }) %>                         
-                        </select>          
+                        </select> 
+
+                                <div class="field-feedback">
+                                    <% if (locals.errors && errors.category_id) { %>
+                                        <%=errors.category_id.msg%>
+                                    <%  }  %>                           
+                                </div>
                     </div>
 
-                    <div>                                              
+                    <div class="form-field">                                              
                         <label for="name">Plataforma</label>
-                        <select name="platform_id" id="platform_id">
+                        <select class= "edit-form-input" name="platform_id" id="platform_id">
                             <option value="">Elegí una opcion</option>
                             <%platforms.forEach(platformList=> { %>                            
                             <option value="<%=platformList.id%>"
                                 <%=platformList.id == product.platform_id ? 'selected' : '' %> > <%=platformList.name %></option>    
                             <% }) %>          
-                       </select>            
+                       </select>  
+                       
+                                <div class="field-feedback">
+                                    <% if (locals.errors && errors.platform_id) { %>
+                                        <%=errors.platform_id.msg%>
+                                    <% } %>                   
+                                </div>
                     </div>
 
-                    <div>
+                    <div class="form-field">
                         <label for="description">Descripcion</label>
-                        <textarea name="description" id="description" required><%=product.description%></textarea>
+                        <textarea class= "edit-form-input" name="description" id="description"><%=product.description%></textarea>
+
+                            <div class="field-feedback">
+                                <% if (locals.errors && errors.description) { %>
+                                    <%=errors.description.msg%>
+                                <%  }  %>         
+                            </div>
                     </div>
 
-                    <div>                                       
+                    <div class="form-field">                                       
                     <label for="price">Precio</label>
-                    <input type="number" name="price" id="price" value="<%=product.price%>" required>                    
+                    <input class= "edit-form-input" type="number" name="price" id="price" value="<%=product.price%>">                    
                     </div>
 
-                    <div>
+                    <div class="form-field">
                         <label for="name">Imagen</label>
-                        <input type="file" name="product_image" id="product_image">
+                        <input class= "edit-form-input" type="file" name="product_image" id="product_image">
+                            <div class="field-feedback">
+                                <% if (locals.errors && errors.product_image) { %>
+                                    <%=errors.product_image.msg%>
+                                <%  }  %>         
+                            </div>
                     </div>
 
                     <div class="edit-button">
