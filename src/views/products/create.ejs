@@ -27,27 +27,39 @@
                    <label for="name">Categoria</label>
                     <select class="create-form-input" name="category_id">
                         <option value="">Elegí una opcion</option>
-                        <%categories.forEach(categoryList=> { %>                            
-                        <option value='<%= categoryList.id %>' ><%= categoryList.name %></option>    
+                        <%categories.forEach(category=> { %>                            
+                        <option value='<%= category.id %>' 
+                            <%= locals.oldFormData && (category.id == oldFormData.category_id) ? 'selected' : null %>>
+                            <%= category.name %> 
+                        </option>    
                         <% }) %>                         
-                    </select>          
+                    </select>
+                        <% if (locals.errors && errors.category_id) { %>
+                            <div class="field-feedback">
+                                <%=errors.category_id.msg%>
+                            </div>
+                        <%  }  %>                           
                 </div>
                 
                 <div class="form-field">                                              
                     <label for="name">Plataforma</label>
                     <select class="create-form-input" name="platform_id" id="platform_id">
                         <option value="">Elegí una opcion</option>
-                        <%platforms.forEach(platformList=> { %>                            
-                        <option value='<%= platformList.id %>' ><%= platformList.name %></option>    
+                        <%platforms.forEach(platform=> { %>                            
+                        <option value='<%= platform.id %>' <%=locals.oldFormData && (platform.id == oldFormData.platform_id) ? 'selected' : null %>>
+                            <%= platform.name %></option>    
                         <% }) %>          
-                   </select>            
+                   </select>
+                    <% if (locals.errors && errors.platform_id) { %>
+                        <div class="field-feedback">
+                            <%=errors.platform_id.msg%>
+                        </div>
+                    <%  }  %>                   
                 </div>
                 
                 <div class="form-field">
                     <label for="description">Descripcion</label>
-                    <textarea class="create-form-input" name="description" id="description" required
-                        value="<%= locals.oldFormData && oldFormData.description ? oldFormData.description : '' %>">
-                    </textarea>
+                    <textarea class="create-form-input" name="description" id="description" required><%=locals.oldFormData && oldFormData.description ? oldFormData.description : '' %>"</textarea>
                     <% if (locals.errors && errors.description) { %>
                         <div class="field-feedback">
                             <%=errors.description.msg%>
