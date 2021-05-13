@@ -1,7 +1,7 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": "Seba1605",
+    "password": "",
     "database": "gameshark_db",
     "host": "localhost",
     "dialect": "mysql",
