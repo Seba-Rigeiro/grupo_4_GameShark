@@ -7,7 +7,10 @@ module.exports = {
                 res
                     .status(200)
                     .json ({
-                        
+                        meta: {
+                            count : categories.length,
+                             
+                         },
                         data: categories,
                         status: 'success'
                 })

@@ -7,7 +7,10 @@ module.exports = {
                 res
                     .status(200)
                     .json ({
-                        
+                        meta: {
+                            count : platforms.length,
+                             
+                         },
                         data: platforms,
                         status: 'success'
                 })
