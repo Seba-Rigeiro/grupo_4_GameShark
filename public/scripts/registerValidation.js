@@ -8,7 +8,7 @@ const errorFirstName = document.querySelector ('.error-first-name')
 const errorLastName = document.querySelector ('.error-last-name')
 const errorPassword = document.querySelector ('.error-password')
 const errorEmail = document.querySelector ('.error-email')
-const errorsMessage = document.querySelectorAll ('.text-danger')
+const errorsMessage = document.querySelectorAll ('.field-feedback')
 
 function resetErrors () {
     errorsMessage.forEach (errorMessage => {

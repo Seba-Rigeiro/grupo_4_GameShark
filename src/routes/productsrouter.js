@@ -13,23 +13,14 @@ const storage = multer.diskStorage ({
     },
     // Genera el nombre de la nueva imagen
     filename: (req, file, callback) => {
-        const newFlieName = 'product-' + Date.now() + path.extname (file.originalname)
-        callback (null, newFlieName)
+        const newFileName = 'product-' + Date.now() + path.extname (file.originalname)
+        callback (null, newFileName)
     }
 })
 
 const upload = multer ({ 
     storage: storage,
-    fileFilter: (req, file, cb) => {
-        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
-          cb(null, true);
-        } else {
-          cb(null, false);
-          let error = 'Solo se aceptan formatos .png, .jpg, .jpeg';
-          return cb(error);
-         
-        } 
-      }
+   
 })
 
 // Rutas creacion de productos con multer para las imagenes
