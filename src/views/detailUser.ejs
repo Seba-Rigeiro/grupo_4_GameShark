@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head.ejs') %>
+<body>   
+    <%- include('partials/header.ejs') %>
+
+    <section class="detail">
+        <div class="detail-container">
+            <div class="detail-img">
+                <img src="/img/users/<%=user.image%>">
+            </div>
+            <div class="detail-content">
+                <div class="detail-title">
+                    <a href="/users/edit/<%= user.id %>" class="butto">EDITAR</a>
+                    <h2><%= user.first_name %> <%= user.last_name %></h2>
+                    <span><%= user.email %></span>
+                </div>
+                <div class="detail-game">
+                    <h2><%= user.email %></h2>
+                </div>
+                <form method="POST" action="/users/<%= user.id %>?_method=delete"> 
+                    <button>BORRAR</button>
+                </form>
+               
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer.ejs') %>            
+</body>
+</html>

@@ -21,6 +21,7 @@ app.use (auth)
 
 const mainRouter = require('./routes/mainrouter');
 const productsRouter = require('./routes/productsrouter');
+const usersRouter = require('./routes/usersrouter');
 const productRouter = require('./routes/api/productRouter');
 const userRouter = require('./routes/api/userRouter');
 const platformRouter = require('./routes/api/platformRouter');
@@ -29,6 +30,7 @@ const { request } = require('express');
 
 app.use('/', mainRouter);
 app.use('/products', productsRouter);
+app.use('/users', usersRouter);
 app.use('/api', productRouter);
 app.use('/api', userRouter);
 app.use('/api', platformRouter);

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head.ejs') %>
+<body>
+    <%- include('partials/header.ejs') %>
+
+    <main>
+        
+        <div class="form-container">
+         
+            <form method='POST' action="/users/<%= user.id %>?_method=PUT"  enctype="multipart/form-data" id="form-edit" >
+                
+                <h1 class="form-title">Editar Usuario</h1>        
+                       
+                    <div class="form-field">
+                        <label for="first_name">Nombre</label>
+                        <input type="text" name='first_name' id="first_name"
+                                value="<%=user.first_name%>">
+                        
+                                <div class="field-feedback error-first-name">
+                                    <% if (locals.errors && errors.first_name) { %>
+                                        <%=errors.first_name.msg%> 
+                                    <%  }  %> 
+                                </div>
+                                            
+                    </div>
+
+                    <div class="form-field">
+                        <label for="last_name">Apellido</label>
+                        <input type="text" name='last_name' id="last_name"
+                                class="form-control" 
+                                value="<%=user.last_name%>">
+                            
+                                <div class="field-feedback error-last-name">
+                                    <% if (locals.errors && errors.last_name) { %>
+                                        <%= errors.last_name.msg  %>
+                                    <%  }  %>         
+                                </div>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" name= 'email'id="email"
+                                value="<%=user.email%>">
+                            
+                                <div class="field-feedback error-email">
+                                    <% if (locals.errors && errors.email) { %>
+                                        <%= errors.email.msg  %>
+                                    <%  }  %>         
+                                </div>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="pass">Contraseña</label>
+                        <input type="password" name= 'password' id="password">
+                            
+                                <div class="field-feedback error-password">
+                                    <% if (locals.errors && errors.password) { %>
+                                        <%= errors.password.msg  %>
+                                    <%  }  %>         
+                                </div>
+                    </div>
+
+                    <div class= "form-field">
+                        <label for="image">Imagen de Perfil</label>
+                        <input type="file" name="user_image" id="user_image">
+                    </div>
+                                        
+                    <div class="form-actions">
+                        <button type="submit" class="button"> Enviar  </button>
+                    </div>
+            </form>      
+        
+        </div>
+        
+    </main>
+    
+    <%- include('partials/footer.ejs') %>           
+  
+</body>
+</html>
