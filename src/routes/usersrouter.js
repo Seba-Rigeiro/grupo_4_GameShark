@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require ('multer');
 const path = require ('path')
 const {body} = require ('express-validator')
-const mainController = require('../controllers/maincontroller');
+const usersController = require('../controllers/userscontroller');
 const validations = require ('../middlewares/validations')
 // Multer para la imagen de usuario
 const storage = multer.diskStorage ({
@@ -23,14 +23,14 @@ const upload = multer ({ storage: storage})
 
 
 
-router.get('/' , mainController.indexUser);
+router.get('/' , usersController.index);
 
-router.get('/:id' , mainController.detailUser);
+router.get('/:id' , usersController.detail);
 
-router.get('/edit/:id' , mainController.editUserForm);
-router.put('/:id' , upload.single ('user_image'), mainController.editUser);
+router.get('/edit/:id' , usersController.editForm);
+router.put('/:id' , upload.single ('user_image'), usersController.edit);
 
-router.delete ('/:id', mainController.deleteUser)
+router.delete ('/:id', usersController.deleteUser)
 
 
 

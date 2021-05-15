@@ -7,64 +7,6 @@ module.exports = {
     index : ( req , res) => {
         res.render('index');
     },
-
-    indexUser : (req , res) => {
-        db.User.findAll({
-            
-        })
-         .then (userList => 
-             res.render ("indexUser", {userList})
-          )        
-           
-      },
-
-    detailUser : (req , res) => {
-        db.User.findByPk(req.params.id)
-            .then(userDetail => {
-                res.render('detailUser', { user: userDetail })    
-            })
-                    
-    },
-
-    editUserForm : (req , res) => {
-        const id = req.params.id
-        Promise.all ([
-            db.User.findByPk(id),
-        ])
-       
-        .then (([user]) => {
-            res.render('editUser', {user}) 
-        })
-    },
-
-    editUser : (req , res ) => {
-        const { id } = req.params
-        const { first_name, last_name, email, } =  req.body
-        
-        db.User.findByPk(id)
-        .then(user => {
-            const userImage = user.image
-            
-            db.User.update({
-                first_name,
-                last_name,
-                email,
-                image: req.file ? req.file.filename : userImage
-            },
-
-            {
-                where: { id }
-            })
-    
-            .then(() => {
-                res.redirect('indexUser')
-            })
-            
-            .catch(err => console.log(err))
-        })    
-                    
-    },
-
     
     loginForm : (req , res) => {
         res.render('login');
@@ -165,23 +107,9 @@ module.exports = {
         }   
     },
 
-       
     mycart : (req , res) => {
         res.render('mycart');
     },
-
-    deleteUser(req, res) {
-        // Busca el producto por el id que viene en la ruta, y lo borra    
-        db.User.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
-            // Direcciona al listado de productos
-            .then((response) => {
-                res.redirect('/users')
-                })
-            }            
 }
 
 
