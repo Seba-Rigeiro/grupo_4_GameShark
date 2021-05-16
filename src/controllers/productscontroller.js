@@ -8,7 +8,7 @@ module.exports = {
         db.Product.findByPk(req.params.id)
             .then(productDetail => {
                 res.render('./products/detail', { product: productDetail })    
-            })
+        })
                     
     },
 
@@ -19,13 +19,12 @@ module.exports = {
                 ['price', 'ASC']
             ]
         })
-         .then (productsList => 
-             res.render ("./products/index", {productsList})
-          )        
-           
-      },
+            .then (productsList => 
+                res.render ("./products/index", {productsList})
+            )        
+    },
 
-      productsByPlatform : (req , res) => {
+    productsByPlatform : (req , res) => {
         db.Product.findAll({
             include: ['category', 'platform'],
             order: [
@@ -36,11 +35,25 @@ module.exports = {
             }
            
         }) 
+        .then (productsList => 
+             res.render ("./products/index", {productsList})
+        )        
+      },
+
+    productsByCategory : (req , res) => {
+        db.Product.findAll({
+            include: ['category', 'platform'],
+            order: [
+                ['price', 'ASC']
+            ],
+            where: {
+                category_id: req.params.id
+            }
+        }) 
          .then (productsList => 
              res.render ("./products/index", {productsList})
-          )        
-           
-      },
+        )        
+    },
 
     createForm : (req , res ) => {
              
@@ -96,8 +109,6 @@ module.exports = {
                     }) 
                 }) 
             }
-
-    
             
         } else {
             Promise.all ([
@@ -111,9 +122,7 @@ module.exports = {
                     oldFormData: req.body
                 }) 
             })
-        
         }
-
     },
 
     editForm : (req , res ) => {
@@ -165,12 +174,13 @@ module.exports = {
                 where: {
                     id: req.params.id
                 }
-            })
+        })
             // Direcciona al listado de productos
             .then((response) => {
                 res.redirect('/products')
-                })
-            }            
+            })
+    
+    }            
 
   
 } 

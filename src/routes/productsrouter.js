@@ -40,5 +40,8 @@ router.delete('/:id' , productsController.deleteProduct);
 // Ruta detalle de producto y listado por plataforma
 router.get('/:id' , productsController.detail);
 router.get('/platform/:id' , productsController.productsByPlatform);
+router.get('/platform/:id/:id' , productsController.detail);
+router.get('/category/:id' , productsController.productsByCategory);
+router.get('/category/:id/:id' , productsController.detail);
 
 module.exports = router;
