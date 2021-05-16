@@ -15,7 +15,7 @@ module.exports = {
     detail : (req , res) => {
         db.User.findByPk(req.params.id)
             .then(userDetail => {
-                res.render('./users/detail', { user: userDetail })    
+                res.render('./users/detail', { user: userDetail })  
             })
                     
     },
