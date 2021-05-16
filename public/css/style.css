@@ -254,6 +254,7 @@ header {
 main {
     flex-grow: 1; /* Si tenemos espacio disponible, el main crece para ocuparlo */ 
     margin-top: var(--header-height); /* Como el header está fixed, tenemos que bajar el main */
+
 }
 
 /**********/
@@ -518,7 +519,7 @@ footer h3 {
 
 .productsgrid {
     width: 100%;
-    height: 100rem;
+    height: 120rem;
     display: flex;
 }
 

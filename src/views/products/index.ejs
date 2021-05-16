@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head.ejs') %>
-<body>   
-    <%- include('../partials/header.ejs') %>
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <header>
+            <%- include('../partials/header.ejs') %>
+    </header>   
+
 
     <main class="productsgrid">
         <div class="filter">
@@ -80,6 +85,8 @@
         </div>
     </main>
 
-    <%- include('../partials/footer.ejs') %>            
+    <footer>
+        <%- include('../partials/footer.ejs') %>
+    </footer>            
 </body>
 </html>
