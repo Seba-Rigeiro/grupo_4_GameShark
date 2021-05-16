@@ -7,7 +7,7 @@
     <section class="detail">
         <div class="detail-container">
             <div class="detail-img">
-                <img src="/img/users/<%=user.image%>">
+                <img src="/img/users/<%=user.image == null ? "user-image-default.jpg" : user.image%>">
             </div>
             <div class="detail-content">
                 <div class="detail-title">

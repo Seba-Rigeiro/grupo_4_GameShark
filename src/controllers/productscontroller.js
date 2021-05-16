@@ -73,9 +73,8 @@ module.exports = {
        console.log ('req.file', req.file)
        if (errors.isEmpty()) {
             const { name, category_id, platform_id, description, price } =  req.body
-            let image = "product-image-default.jpg"
             
-            if (req.file && ACCEPTED_IMAGE_MIMETYPES.includes(req.file.mimetype) || !req.file) {
+            if (req.file && ACCEPTED_IMAGE_MIMETYPES.includes(req.file.mimetype) || req.file == null) {
                 
 
                 db.Product.create({
@@ -84,7 +83,7 @@ module.exports = {
                     platform_id,
                     description, 
                     price,
-                    image: req.file ? req.file.filename : image
+                    image: req.file ? req.file.filename : null
                 })
                     .then(product => {
                         return res.redirect('/products')

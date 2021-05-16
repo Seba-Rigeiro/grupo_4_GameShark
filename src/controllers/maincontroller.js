@@ -83,14 +83,13 @@ module.exports = {
         if (errors.isEmpty()) {
         
             const { first_name, last_name, email, password,} =  req.body
-            const userImageDefault = 'user-image-default.jpg'
-            
+                       
             db.User.create({
             first_name: first_name ,
             last_name: last_name , 
             email: email, 
             password: passwordHash,
-            image: req.file ? req.file.filename : userImageDefault
+            image: req.file ? req.file.filename : null
            
         
             })

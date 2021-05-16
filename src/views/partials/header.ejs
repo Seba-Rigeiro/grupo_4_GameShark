@@ -23,7 +23,7 @@
             <li><span></span></li>
             <li> <% if (locals.user) { %>
                 <span><%= user.first_name %></span>
-                <img class="user_image" src= "/img/users/<%= user.image%>"
+                <img class="user_image" src= "/img/users/<%= user.image == null ? "user-image-default.jpg" : user.image%>"
                 alt="<%= user.first_name %>">
                 <a href="/logout">Salir</a>
             <% } else { %>
