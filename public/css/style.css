@@ -369,7 +369,7 @@ footer h3 {
 /* Home */
 
 .hero {
-    margin-top: 4rem;
+    margin-top: 0.1rem;
     background-image: url('../img/hero.jpg');
     background-position: center;
     width: 100%;
@@ -421,6 +421,7 @@ footer h3 {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 1rem;
 }
 
 .item {
