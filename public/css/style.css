@@ -606,7 +606,7 @@ footer h3 {
 
 .gridproducts {
     margin-top: 5rem;
-    height: 52%;
+    height:fit-content;
     width: 90%;
 
     display: flex;
@@ -629,6 +629,7 @@ footer h3 {
 
 .itemproduct img {
     width: 13rem;
+    height: 270px;
 }
 
 .footeritem {
