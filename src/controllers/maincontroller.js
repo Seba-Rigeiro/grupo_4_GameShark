@@ -81,22 +81,46 @@ module.exports = {
         
         // Si no hay errores se crea el usuario los datos que vienen en el body. Para la imagen se usa req.file 
         if (errors.isEmpty()) {
-        
-            const { first_name, last_name, email, password,} =  req.body
-                       
-            db.User.create({
-            first_name: first_name ,
-            last_name: last_name , 
-            email: email, 
-            password: passwordHash,
-            image: req.file ? req.file.filename : null
-           
-        
+
+            db.User.findOne({
+                where: {
+                    email: req.body.email
+                }
             })
-            .then(user => {
-                res.redirect('/')
+            .then (dbUser =>{
+                if (dbUser) {
+                    res.render('register', {
+                        errors: {
+                            email: {
+                                value: '',
+                                msg: 'el email ya existe',
+                                param: 'email',
+                                location: 'body'
+                            }
+                        },
+                        oldFormData: req.body
+                    })
+                } else {
+
+                    const { first_name, last_name, email, password,} =  req.body
+                               
+                    db.User.create({
+                    first_name: first_name ,
+                    last_name: last_name , 
+                    email: email, 
+                    password: passwordHash,
+                    image: req.file ? req.file.filename : null
+                   
+                
+                    })
+                    .then(user => {
+                        res.redirect('/')
+                    })
+                    .catch(err => console.log(err))
+                }
             })
-            .catch(err => console.log(err))
+            
+        
             // Si hay errores, redirecciona nuevamente a la pagina de registro y los muestra.
          } else {
             res.render('register', { 
