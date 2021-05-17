@@ -370,7 +370,7 @@ footer h3 {
 
 .hero {
     margin-top: 4rem;
-    background-image: url('/img/hero.jpg');
+    background-image: url('../img/hero.jpg');
     background-position: center;
     width: 100%;
     height: 35rem;
@@ -519,7 +519,6 @@ footer h3 {
 
 .productsgrid {
     width: 100%;
-    height: 120rem;
     display: flex;
 }
 
@@ -530,7 +529,6 @@ footer h3 {
     padding-top: 5rem;
     padding-left: 2rem;
     width: 25%;
-    height: 100%;
     background-color: cornflowerblue;
     box-shadow: 0 0 10px cornflowerblue;
 }
@@ -599,6 +597,8 @@ footer h3 {
 
 .productscontainer {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
     width: 100%;
@@ -610,7 +610,7 @@ footer h3 {
     width: 90%;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 
 }
